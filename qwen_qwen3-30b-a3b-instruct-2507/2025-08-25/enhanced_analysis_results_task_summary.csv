@@ -1,0 +1,5 @@
+task_type,total_tasks,successful_tasks,success_rate,avg_time,longest_time,shortest_time,avg_steps,most_steps,least_steps
+detection,29,22,75.9,7.94,25.24,2.07,6.8,14,3
+localization,25,4,16.0,10.63,54.98,2.21,7.4,30,3
+analysis,11,0,0.0,7.59,21.31,2.18,7.1,14,3
+mitigation,11,1,9.1,193.59,1728.38,18.91,25.2,30,15
