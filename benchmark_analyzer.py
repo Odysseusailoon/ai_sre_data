@@ -28,7 +28,7 @@ def extract_task_type(problem_id):
 
     return 'unknown'
 
-def analyze_json_files(input_dir):
+def analyze_json_files(input_dir, is_supervisor_enabled):
     """Analyze all JSON files in the input directory and return detailed results"""
     results = []
     json_dir = Path(input_dir)
@@ -42,7 +42,6 @@ def analyze_json_files(input_dir):
         try:
             with open(json_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-            
             # Extract key information
             result = {
                 'filename': json_file.name,
@@ -55,7 +54,8 @@ def analyze_json_files(input_dir):
                 'start_time': data.get('start_time', None),
                 'end_time': data.get('end_time', None),
                 'duration': None,
-                'steps': data.get('results', {}).get('steps', None)
+                'steps': data.get('results', {}).get('steps', None),
+                'supervisor_result': data.get('results', {}).get('supervisor_result', None),
             }
             
             # Handle different success indicators (reference enhanced_analysis logic)
@@ -65,7 +65,10 @@ def analyze_json_files(input_dir):
             if 'success' in results_data:
                 result['success'] = results_data.get('success', False)
             elif 'Detection Accuracy' in results_data:
-                result['success'] = results_data.get('Detection Accuracy') == 'Correct'
+                if is_supervisor_enabled:
+                    result['success'] = results_data.get('Detection Accuracy') == 'Correct' and result['supervisor_result'] == 'Correct'
+                else:
+                    result['success'] = results_data.get('Detection Accuracy') == 'Correct'
             elif 'Localization Accuracy' in results_data:
                 result['success'] = results_data.get('Localization Accuracy') == 'Correct'
             elif 'Analysis Accuracy' in results_data:
@@ -105,7 +108,7 @@ def generate_detailed_csv(results, output_dir):
     df = pd.DataFrame(results)
     df.to_csv(detailed_csv, index=False)
     
-    print(f"Detailed results written to {detailed_csv}")
+    print(f"Detailed results written to {detailed_csv}\n")
     return df, detailed_csv
 
 
@@ -168,7 +171,7 @@ def generate_observation_csv(df, output_dir):
     observation_df = pd.DataFrame(observation_results)
     observation_df.to_csv(observation_csv, index=False)
     
-    print(f"Observation results written to {observation_csv}")
+    print(f"Observation results written to {observation_csv}\n")
     return observation_df, observation_csv
 
 def convert_timestamp_to_utc(timestamp):
@@ -184,9 +187,7 @@ def convert_timestamp_to_utc(timestamp):
 
 def print_summary_stats(df):
     """Print summary statistics to console"""
-    print("\n" + "="*80)
-    print("BENCHMARK ANALYSIS SUMMARY")
-    print("="*80)
+    print("## BENCHMARK ANALYSIS SUMMARY")
     
     # Overall statistics
     total_tasks = len(df)
@@ -194,19 +195,19 @@ def print_summary_stats(df):
     failed_tasks = len(df[df['success'] == False])
     unknown_tasks = len(df[df['success'].isna()])
     
-    print(f"\nOVERALL STATISTICS:")
-    print(f"Total Tasks: {total_tasks}")
-    print(f"Successful Tasks: {successful_tasks} ({successful_tasks/total_tasks*100:.1f}%)")
-    print(f"Failed Tasks: {failed_tasks} ({failed_tasks/total_tasks*100:.1f}%)")
-    print(f"Unknown Status: {unknown_tasks} ({unknown_tasks/total_tasks*100:.1f}%)")
+    print(f"\n**OVERALL STATISTICS:**")
+    print(f"- Total Tasks: {total_tasks}")
+    print(f"- Successful Tasks: {successful_tasks} ({successful_tasks/total_tasks*100:.1f}%)")
+    print(f"- Failed Tasks: {failed_tasks} ({failed_tasks/total_tasks*100:.1f}%)")
+    print(f"- Unknown Status: {unknown_tasks} ({unknown_tasks/total_tasks*100:.1f}%)")
     
     # Task type distribution
-    print(f"\nTASK TYPE DISTRIBUTION:")
+    print(f"\n**TASK TYPE DISTRIBUTION:**")
     task_counts = df['task_type'].value_counts()
     for task_type, count in task_counts.items():
         task_success = len(df[(df['task_type'] == task_type) & (df['success'] == True)])
         task_success_rate = (task_success / count * 100) if count > 0 else 0
-        print(f"{task_type.capitalize()}: {count} tasks, {task_success_rate:.1f}% success rate")
+        print(f"- {task_type.capitalize()}: {count} tasks, {task_success_rate:.1f}% success rate")
 
 
 def main():
@@ -219,6 +220,7 @@ def main():
                        help='Output directory for CSV reports (default: current directory)')
     parser.add_argument('--quiet', '-q', action='store_true',
                        help='Suppress console summary output')
+    parser.add_argument('--supervisor', '-s', help="filter result by supervisor_result", default=True)
     
     args = parser.parse_args()
     
@@ -227,11 +229,11 @@ def main():
         print(f"Error: Input directory '{args.input_dir}' not found.")
         return 1
     
-    print(f"Analyzing JSON files in: {args.input_dir}")
-    print(f"Output directory: {args.output_dir}")
+    print(f"Analyzing JSON files in: {args.input_dir}\n")
+    print(f"Output directory: {args.output_dir}\n")
     
     # Analyze JSON files
-    results = analyze_json_files(args.input_dir)
+    results = analyze_json_files(args.input_dir, args.supervisor)
     
     if not results:
         print("No valid JSON files found to analyze.")
@@ -246,10 +248,8 @@ def main():
     # Print summary unless quiet mode
     if not args.quiet:
         print_summary_stats(df)
-    
-    print(f"\n" + "="*80)
-    print("GENERATED FILES:")
-    print("="*80)
+
+    print("## GENERATED FILES:")
     print(f"1. Detailed Results: {detailed_csv_path}")
     print(f"2. Observation Results: {observation_csv_path}")
     print(f"\nAnalysis complete!")

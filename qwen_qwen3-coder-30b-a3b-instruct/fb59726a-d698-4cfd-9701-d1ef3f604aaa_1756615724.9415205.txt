@@ -1,0 +1,746 @@
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop")
+```
+===== Output Message from docker ====
+NAME                               READY   STATUS     RESTARTS      AGE
+accounting-567f87bbcd-lx988        1/1     Running    0             44s
+ad-94bd576b5-gb6fw                 1/1     Running    0             44s
+cart-6fd857c656-x65dp              1/1     Running    0             44s
+checkout-5bc54f8cd8-wbcwf          1/1     Running    0             43s
+currency-5864f94d89-lh6rz          1/1     Running    0             42s
+email-59d9ffc758-sv5qj             1/1     Running    0             44s
+flagd-5967696544-s788l             0/2     Init:0/1   0             1s
+flagd-86575d5796-n7frx             2/2     Running    0             41s
+fraud-detection-65868bcdb5-r8rxk   1/1     Running    2 (16s ago)   42s
+frontend-7d6b77c58-8qr24           1/1     Running    0             41s
+frontend-proxy-548b4649d7-txx9g    1/1     Running    0             44s
+grafana-6b9fb84fb7-8wdch           1/1     Running    1 (25s ago)   43s
+image-provider-7f5bc6bf-wsbcz      1/1     Running    0             43s
+jaeger-55f499595b-kgfs9            1/1     Running    0             42s
+kafka-6494b5cf67-28jb5             1/1     Running    0             43s
+load-generator-68b6f899f5-7pzp4    1/1     Running    0             42s
+opensearch-0                       1/1     Running    0             44s
+otel-collector-758b8784c-vsx8k     1/1     Running    0             41s
+payment-7597577cb5-jdxnz           1/1     Running    0             43s
+product-catalog-6988cd5f49-8m46b   1/1     Running    0             42s
+prometheus-58b7bfb774-xjjlk        1/1     Running    0             44s
+quote-78bf8788-nlg72               1/1     Running    0             44s
+recommendation-7b49c8cb75-cz487    1/1     Running    0             44s
+shipping-7f445d59dc-lfqrn          1/1     Running    0             44s
+valkey-cart-6475dcc67f-zx8l7       1/1     Running    0             44s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop --field-selector=status.phase!=Running")
+```
+===== Output Message from docker ====
+NAME                     READY   STATUS     RESTARTS   AGE
+flagd-5967696544-s788l   0/2     Init:0/1   0          2s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod flagd-5967696544-s788l -n astronomy-shop")
+```
+===== Output Message from docker ====
+Name:             flagd-5967696544-s788l
+Namespace:        astronomy-shop
+Priority:         0
+Service Account:  astronomy-shop
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 04:48:44 +0000
+Labels:           app.kubernetes.io/component=flagd
+                  app.kubernetes.io/name=flagd
+                  opentelemetry.io/name=flagd
+                  pod-template-hash=5967696544
+Annotations:      kubectl.kubernetes.io/restartedAt: 2025-08-31T04:48:44Z
+Status:           Pending
+IP:               10.244.1.203
+IPs:
+  IP:           10.244.1.203
+Controlled By:  ReplicaSet/flagd-5967696544
+Init Containers:
+  init-config:
+    Container ID:  containerd://6f1dadb79eb195782438aa1bd777e92301606fc5b0f936de500d5910f2f26199
+    Image:         busybox
+    Image ID:      docker.io/library/busybox@sha256:ab33eacc8251e3807b85bb6dba570e4698c3998eca6f0fc2ccb60575a563ea74
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+      cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json && cat /config-rw/demo.flagd.json
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sun, 31 Aug 2025 04:48:47 +0000
+      Finished:     Sun, 31 Aug 2025 04:48:47 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /config-ro from config-ro (rw)
+      /config-rw from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cgmbx (ro)
+Containers:
+  flagd:
+    Container ID:  
+    Image:         ghcr.io/open-feature/flagd:v0.12.8
+    Image ID:      
+    Ports:         8013/TCP, 8016/TCP
+    Host Ports:    0/TCP, 0/TCP
+    Command:
+      /flagd-build
+      start
+      --port
+      8013
+      --ofrep-port
+      8016
+      --uri
+      file:./etc/flagd/demo.flagd.json
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      memory:  75Mi
+    Requests:
+      memory:  75Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      FLAGD_METRICS_EXPORTER:                             otel
+      FLAGD_OTEL_COLLECTOR_URI:                           $(OTEL_COLLECTOR_NAME):4317
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /etc/flagd from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cgmbx (ro)
+  flagd-ui:
+    Container ID:   
+    Image:          ghcr.io/open-telemetry/demo:2.0.2-flagd-ui
+    Image ID:       
+    Port:           4000/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      memory:  100Mi
+    Requests:
+      memory:  100Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      FLAGD_METRICS_EXPORTER:                             otel
+      OTEL_EXPORTER_OTLP_ENDPOINT:                        http://$(OTEL_COLLECTOR_NAME):4318
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /app/data from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cgmbx (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  config-rw:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config-ro:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      flagd-config
+    Optional:  false
+  kube-api-access-cgmbx:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  4s    default-scheduler  Successfully assigned astronomy-shop/flagd-5967696544-s788l to niko-0830-worker
+  Normal  Pulling    3s    kubelet            Pulling image "busybox"
+  Normal  Pulled     1s    kubelet            Successfully pulled image "busybox" in 1.658s (1.658s including waiting). Image size: 2223685 bytes.
+  Normal  Created    1s    kubelet            Created container: init-config
+  Normal  Started    1s    kubelet            Started container init-config
+  Normal  Pulled     1s    kubelet            Container image "ghcr.io/open-feature/flagd:v0.12.8" already present on machine
+  Normal  Created    1s    kubelet            Created container: flagd
+  Normal  Started    1s    kubelet            Started container flagd
+  Normal  Pulled     1s    kubelet            Container image "ghcr.io/open-telemetry/demo:2.0.2-flagd-ui" already present on machine
+  Normal  Created    0s    kubelet            Created container: flagd-ui
+  Normal  Started    0s    kubelet            Started container flagd-ui
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs pod flagd-5967696544-s788l -n astronomy-shop --all-containers=true")
+```
+[ERROR] Docker command execution failed: error: error from server (NotFound): pods "pod" not found in namespace "astronomy-shop"
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs -n astronomy-shop flagd-5967696544-s788l --all-containers=true")
+```
+===== Output Message from docker ====
+{
+  "$schema": "https://flagd.dev/schema/v0/flags.json",
+  "flags": {
+    "productCatalogFailure": {
+      "description": "Fail product catalog service on a specific product",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "recommendationCacheFailure": {
+      "description": "Fail recommendation service cache",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "on"
+    },
+    "adManualGc": {
+      "description": "Triggers full manual garbage collections in the ad service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "adHighCpu": {
+      "description": "Triggers high cpu load in the ad service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "adFailure": {
+      "description": "Fail ad service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "kafkaQueueProblems": {
+      "description": "Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike",
+      "state": "ENABLED",
+      "variants": {
+        "on": 100,
+        "off": 0
+      },
+      "defaultVariant": "off"
+    },
+    "cartFailure": {
+      "description": "Fail cart service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "paymentFailure": {
+      "description": "Fail payment service charge requests n%",
+      "state": "ENABLED",
+      "variants": {
+        "100%": 1,
+        "90%": 0.95,
+        "75%": 0.75,
+        "50%": 0.5,
+        "25%": 0.25,
+        "10%": 0.1,
+        "off": 0
+      },
+      "defaultVariant": "off"
+    },
+    "paymentUnreachable": {
+      "description": "Payment service is unavailable",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "loadGeneratorFloodHomepage": {
+      "description": "Flood the frontend with a large amount of requests.",
+      "state": "ENABLED",
+      "variants": {
+        "on": 100,
+        "off": 0
+      },
+      "defaultVariant": "off"
+    },
+    "imageSlowLoad": {
+      "description": "slow loading images in the frontend",
+      "state": "ENABLED",
+      "variants": {
+        "10sec": 10000,
+        "5sec": 5000,
+        "off": 0
+      },
+      "defaultVariant": "off"
+    }
+  }
+}
+		 ______   __       ________   _______    ______      
+		/_____/\ /_/\     /_______/\ /______/\  /_____/\     
+		\::::_\/_\:\ \    \::: _  \ \\::::__\/__\:::_ \ \    
+		 \:\/___/\\:\ \    \::(_)  \ \\:\ /____/\\:\ \ \ \   
+		  \:::._\/ \:\ \____\:: __  \ \\:\\_  _\/ \:\ \ \ \  
+		   \:\ \    \:\/___/\\:.\ \  \ \\:\_\ \ \  \:\/.:| | 
+		    \_\/     \_____\/ \__\/\__\/ \_____\/   \____/_/ 
+
+2025-08-31T04:48:48.021Z	info	cmd/start.go:140	flagd version: v0.12.8 (c0a2940aef33f8558aa6ea4941ded74f0a6f6e83), built at: 2025-07-23	{"component": "start"}
+2025-08-31T04:48:48.022Z	info	flag-sync/sync_service.go:96	starting flag sync service on port 8015	{"component": "FlagSyncService"}
+2025-08-31T04:48:48.022Z	info	file/filepath_sync.go:60	Starting filepath sync notifier	{"component": "sync", "sync": "fsnotify"}
+2025-08-31T04:48:48.022Z	info	flag-evaluation/connect_service.go:251	metrics and probes listening at 8014	{"component": "service"}
+2025-08-31T04:48:48.022Z	info	ofrep/ofrep_service.go:58	ofrep service listening at 8016	{"component": "OFREPService"}
+2025-08-31T04:48:48.022Z	info	file/filepath_sync.go:99	watching filepath: ./etc/flagd/demo.flagd.json	{"component": "sync", "sync": "fsnotify"}
+2025-08-31T04:48:48.023Z	info	flag-evaluation/connect_service.go:231	Flag IResolver listening at [::]:8013	{"component": "service"}
+
+> flagd-ui@0.1.0 start
+> next start -p 4000 -H 0.0.0.0
+
+   ▲ Next.js 15.2.0
+   - Local:        http://localhost:4000
+   - Network:      http://0.0.0.0:4000
+
+ ✓ Starting...
+ ✓ Ready in 614ms
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd")
+```
+===== Output Message from docker ====
+NAME                     READY   STATUS    RESTARTS   AGE
+flagd-5967696544-s788l   2/2     Running   0          8s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd --show-labels")
+```
+===== Output Message from docker ====
+NAME                     READY   STATUS    RESTARTS   AGE   LABELS
+flagd-5967696544-s788l   2/2     Running   0          10s   app.kubernetes.io/component=flagd,app.kubernetes.io/name=flagd,opentelemetry.io/name=flagd,pod-template-hash=5967696544
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.containerStatuses[*].ready}'")
+```
+===== Output Message from docker ====
+true true
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.containerStatuses[*].restartCount}'")
+```
+===== Output Message from docker ====
+0 0
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.phase}'")
+```
+===== Output Message from docker ====
+Running
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].spec.containers[*].name}'")
+```
+===== Output Message from docker ====
+flagd flagd-ui
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].spec.containers[*].image}'")
+```
+===== Output Message from docker ====
+ghcr.io/open-feature/flagd:v0.12.8 ghcr.io/open-telemetry/demo:2.0.2-flagd-ui
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.containerStatuses[*].state}'")
+```
+===== Output Message from docker ====
+{"running":{"startedAt":"2025-08-31T04:48:47Z"}} {"running":{"startedAt":"2025-08-31T04:48:48Z"}}
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.containerStatuses[*].lastState}'")
+```
+===== Output Message from docker ====
+{} {}
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.conditions[*].type}'")
+```
+===== Output Message from docker ====
+PodReadyToStartContainers Initialized Ready ContainersReady PodScheduled
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.conditions[*].status}'")
+```
+===== Output Message from docker ====
+True True True True True
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.conditions[*].reason}'")
+```
+===== Output Message from docker ====
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[*].status.conditions[*].message}'")
+```
+===== Output Message from docker ====
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o wide")
+```
+===== Output Message from docker ====
+NAME                     READY   STATUS    RESTARTS   AGE   IP             NODE               NOMINATED NODE   READINESS GATES
+flagd-5967696544-s788l   2/2     Running   0          30s   10.244.1.203   niko-0830-worker   <none>           <none>
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o yaml")
+```
+===== Output Message from docker ====
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-08-31T04:48:44Z"
+    creationTimestamp: "2025-08-31T04:48:44Z"
+    generateName: flagd-5967696544-
+    labels:
+      app.kubernetes.io/component: flagd
+      app.kubernetes.io/name: flagd
+      opentelemetry.io/name: flagd
+      pod-template-hash: "5967696544"
+    name: flagd-5967696544-s788l
+    namespace: astronomy-shop
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: flagd-5967696544
+      uid: c1a33f53-6ff2-48a5-888d-2549099d61de
+    resourceVersion: "230904"
+    uid: 5c45eeea-1e55-4b29-bd9b-d35b2a9b23c6
+  spec:
+    containers:
+    - command:
+      - /flagd-build
+      - start
+      - --port
+      - "8013"
+      - --ofrep-port
+      - "8016"
+      - --uri
+      - file:./etc/flagd/demo.flagd.json
+      env:
+      - name: OTEL_SERVICE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.labels['app.kubernetes.io/component']
+      - name: OTEL_COLLECTOR_NAME
+        value: otel-collector
+      - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+        value: cumulative
+      - name: FLAGD_METRICS_EXPORTER
+        value: otel
+      - name: FLAGD_OTEL_COLLECTOR_URI
+        value: $(OTEL_COLLECTOR_NAME):4317
+      - name: OTEL_RESOURCE_ATTRIBUTES
+        value: service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+      image: ghcr.io/open-feature/flagd:v0.12.8
+      imagePullPolicy: IfNotPresent
+      name: flagd
+      ports:
+      - containerPort: 8013
+        name: rpc
+        protocol: TCP
+      - containerPort: 8016
+        name: ofrep
+        protocol: TCP
+      resources:
+        limits:
+          memory: 75Mi
+        requests:
+          memory: 75Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/flagd
+        name: config-rw
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cgmbx
+        readOnly: true
+    - env:
+      - name: OTEL_SERVICE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.labels['app.kubernetes.io/component']
+      - name: OTEL_COLLECTOR_NAME
+        value: otel-collector
+      - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+        value: cumulative
+      - name: FLAGD_METRICS_EXPORTER
+        value: otel
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: http://$(OTEL_COLLECTOR_NAME):4318
+      - name: OTEL_RESOURCE_ATTRIBUTES
+        value: service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+      image: ghcr.io/open-telemetry/demo:2.0.2-flagd-ui
+      imagePullPolicy: IfNotPresent
+      name: flagd-ui
+      ports:
+      - containerPort: 4000
+        name: service
+        protocol: TCP
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          memory: 100Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /app/data
+        name: config-rw
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cgmbx
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    initContainers:
+    - command:
+      - sh
+      - -c
+      - cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json && cat /config-rw/demo.flagd.json
+      image: busybox
+      imagePullPolicy: Always
+      name: init-config
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /config-ro
+        name: config-ro
+      - mountPath: /config-rw
+        name: config-rw
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cgmbx
+        readOnly: true
+    nodeName: niko-0830-worker
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: astronomy-shop
+    serviceAccountName: astronomy-shop
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - emptyDir: {}
+      name: config-rw
+    - configMap:
+        defaultMode: 420
+        name: flagd-config
+      name: config-ro
+    - name: kube-api-access-cgmbx
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-08-31T04:48:47Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-08-31T04:48:47Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-08-31T04:48:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-08-31T04:48:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-08-31T04:48:44Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://36e266eb4b7d8317a1868144cf17e620f43ef77e61d7b712856f4c3edbbb67a1
+      image: ghcr.io/open-feature/flagd:v0.12.8
+      imageID: ghcr.io/open-feature/flagd@sha256:634bd05995f5fd0a1b8196822feb8c2d99d37be9e2a25cb17b5d6c4c8fd7e821
+      lastState: {}
+      name: flagd
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-08-31T04:48:47Z"
+      volumeMounts:
+      - mountPath: /etc/flagd
+        name: config-rw
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cgmbx
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://c719816f8b2e347d1916354358f38cee205eae07a8083662de770bc29dcff2e4
+      image: ghcr.io/open-telemetry/demo:2.0.2-flagd-ui
+      imageID: ghcr.io/open-telemetry/demo@sha256:655da6a8735b7bb7da2c36c8992387d03ae06420f2a06fbc499f2591889c1d03
+      lastState: {}
+      name: flagd-ui
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-08-31T04:48:48Z"
+      volumeMounts:
+      - mountPath: /app/data
+        name: config-rw
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cgmbx
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 172.18.0.2
+    hostIPs:
+    - ip: 172.18.0.2
+    initContainerStatuses:
+    - containerID: containerd://6f1dadb79eb195782438aa1bd777e92301606fc5b0f936de500d5910f2f26199
+      image: docker.io/library/busybox:latest
+      imageID: docker.io/library/busybox@sha256:ab33eacc8251e3807b85bb6dba570e4698c3998eca6f0fc2ccb60575a563ea74
+      lastState: {}
+      name: init-config
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: containerd://6f1dadb79eb195782438aa1bd777e92301606fc5b0f936de500d5910f2f26199
+          exitCode: 0
+          finishedAt: "2025-08-31T04:48:47Z"
+          reason: Completed
+          startedAt: "2025-08-31T04:48:47Z"
+      volumeMounts:
+      - mountPath: /config-ro
+        name: config-ro
+      - mountPath: /config-rw
+        name: config-rw
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cgmbx
+        readOnly: true
+        recursiveReadOnly: Disabled
+    phase: Running
+    podIP: 10.244.1.203
+    podIPs:
+    - ip: 10.244.1.203
+    qosClass: Burstable
+    startTime: "2025-08-31T04:48:44Z"
+kind: List
+metadata:
+  resourceVersion: ""
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.containerStatuses[0].state.running.startedAt}'")
+```
+===== Output Message from docker ====
+2025-08-31T04:48:47Z
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.containerStatuses[1].state.running.startedAt}'")
+```
+===== Output Message from docker ====
+2025-08-31T04:48:48Z
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.initContainerStatuses[0].state.terminated.finishedAt}'")
+```
+===== Output Message from docker ====
+2025-08-31T04:48:47Z
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.initContainerStatuses[0].state.terminated.exitCode}'")
+```
+===== Output Message from docker ====
+0
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.initContainerStatuses[0].state.terminated.reason}'")
+```
+===== Output Message from docker ====
+Completed
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.phase}'")
+```
+===== Output Message from docker ====
+Running
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.conditions[2].status}'")
+```
+===== Output Message from docker ====
+True
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.conditions[3].status}'")
+```
+===== Output Message from docker ====
+True
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.conditions[4].status}'")
+```
+===== Output Message from docker ====
+True
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop -l app.kubernetes.io/component=flagd -o jsonpath='{.items[0].status.conditions[0].status}'")
+```
+===== Output Message from docker ====
+True

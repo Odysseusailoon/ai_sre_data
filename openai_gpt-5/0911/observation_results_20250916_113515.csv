@@ -1,0 +1,5 @@
+taskType,successRate,averageTime,averageSteps,longestTime,mostSteps,leastTime,leastSteps
+detection,66.67,162.26,9.27,913.99,30,26.71,3
+localization,39.29,417.54,17.36,977.59,30,15.36,3
+analysis,7.69,368.33,16.38,952.43,30,36.79,5
+mitigation,100.0,423.12,20.46,906.84,30,56.38,7

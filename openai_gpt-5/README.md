@@ -1,0 +1,2 @@
+- 0911: generated results for original 88 problems
+- 0922: enerated results for variants problems

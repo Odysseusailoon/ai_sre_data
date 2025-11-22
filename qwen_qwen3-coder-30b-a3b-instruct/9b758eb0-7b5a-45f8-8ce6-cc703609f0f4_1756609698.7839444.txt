@@ -1,0 +1,1078 @@
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+NAME                                      READY   STATUS    RESTARTS   AGE
+consul-b84877fb4-qsjrj                    1/1     Running   0          38s
+frontend-69d95967fb-8b8vq                 1/1     Running   0          38s
+geo-99d8c58c-vbz67                        1/1     Running   0          38s
+jaeger-67445b6dd6-n6b7v                   1/1     Running   0          38s
+memcached-profile-66bb9c8b9d-lwmnq        1/1     Running   0          38s
+memcached-rate-68585796cb-6ckq5           1/1     Running   0          38s
+memcached-reserve-646c7dcd6b-brg5j        1/1     Running   0          37s
+mongodb-geo-5ff578bcb8-lmm67              1/1     Running   0          38s
+mongodb-profile-758cb77f9f-rhf2c          1/1     Running   0          38s
+mongodb-rate-56cc8659c9-d42sm             1/1     Running   0          38s
+mongodb-recommendation-55699465f7-xkqhd   1/1     Running   0          37s
+mongodb-reservation-5994859869-8b8sp      1/1     Running   0          36s
+mongodb-user-969c6c449-4ppk2              1/1     Running   0          36s
+profile-676fcc86d5-4mtzg                  1/1     Running   0          38s
+rate-c9bc58c85-2t644                      1/1     Running   0          38s
+recommendation-8675c6c9ff-wkxhz           1/1     Running   0          37s
+reservation-7699b8fdd4-nn85v              1/1     Running   0          36s
+search-65df96d8df-gcf46                   1/1     Running   0          36s
+user-8477d787d8-z7g5f                     1/1     Running   0          17s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get services -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                                                                       AGE
+consul                   ClusterIP   10.96.198.167   <none>        8300/TCP,8400/TCP,8500/TCP,8600/UDP                                           39s
+frontend                 ClusterIP   10.96.195.204   <none>        5000/TCP                                                                      39s
+geo                      ClusterIP   10.96.167.116   <none>        8083/TCP                                                                      39s
+jaeger                   ClusterIP   10.96.6.51      <none>        14269/TCP,5778/TCP,14268/TCP,14267/TCP,16686/TCP,5775/UDP,6831/UDP,6832/UDP   39s
+jaeger-out               NodePort    10.96.50.230    <none>        16686:31350/TCP                                                               39s
+memcached-profile        ClusterIP   10.96.39.137    <none>        11211/TCP                                                                     39s
+memcached-rate           ClusterIP   10.96.152.40    <none>        11211/TCP                                                                     39s
+memcached-reserve        ClusterIP   10.96.243.88    <none>        11211/TCP                                                                     39s
+mongodb-geo              ClusterIP   10.96.254.27    <none>        27017/TCP                                                                     39s
+mongodb-profile          ClusterIP   10.96.88.244    <none>        27017/TCP                                                                     39s
+mongodb-rate             ClusterIP   10.96.114.197   <none>        27017/TCP                                                                     39s
+mongodb-recommendation   ClusterIP   10.96.122.103   <none>        27017/TCP                                                                     39s
+mongodb-reservation      ClusterIP   10.96.20.124    <none>        27017/TCP                                                                     39s
+mongodb-user             ClusterIP   10.96.167.179   <none>        27017/TCP                                                                     39s
+profile                  ClusterIP   10.96.186.224   <none>        8081/TCP                                                                      39s
+rate                     ClusterIP   10.96.32.93     <none>        8084/TCP                                                                      39s
+recommendation           ClusterIP   10.96.7.39      <none>        8085/TCP                                                                      39s
+reservation              ClusterIP   10.96.144.61    <none>        8087/TCP                                                                      39s
+search                   ClusterIP   10.96.201.185   <none>        8082/TCP                                                                      39s
+user                     ClusterIP   10.96.128.234   <none>        8086/TCP                                                                      39s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/frontend -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:45Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:45Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:45Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:23[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:39[0m[36m >[0m [1mRead target port: 5000[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:40[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:41[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:48[0m[36m >[0m [1mInitializing jaeger agent [service name: frontend | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:53[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:55[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:60[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:70[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:45[0m[36m >[0m [1mInitializing gRPC clients...[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-search.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-profile.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-recommendation.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-user.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-reservation.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:65[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:87[0m[36m >[0m [1mServing http[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/profile -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:49Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:49Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:49Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:37[0m[36m >[0m [1mRead database URL: mongodb-profile:27017[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:38[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/db.go:36[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/db.go:38[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:41[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:43[0m[36m >[0m [1mRead profile memcashed address: memcached-profile:11211[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:44[0m[36m >[0m [1mInitializing Memcashed client...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mtune/setting.go:61[0m[36m >[0m [1mTune: GetMemCTimeout 2[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:46[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:50[0m[36m >[0m [1mRead target port: 8081[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:51[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:52[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:61[0m[36m >[0m [1mInitializing jaeger agent [service name: profile | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:66[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:68[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:73[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:85[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-profile, id: 0451e4b7-b6b1-4abc-a615-6b9fd4c34566, address: 10.244.1.163:8081 ][0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mservices/profile/server.go:99[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/reservation -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:58Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:58Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:58Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:25[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:38[0m[36m >[0m [1mRead database URL: mongodb-reservation:27017[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:39[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/db.go:30[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:42[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:44[0m[36m >[0m [1mRead profile memcashed address: memcached-reserve:11211[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:45[0m[36m >[0m [1mInitializing Memcashed client...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mtune/setting.go:61[0m[36m >[0m [1mTune: GetMemCTimeout 2[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:47[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:51[0m[36m >[0m [1mRead target port: 8087[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:52[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:53[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:62[0m[36m >[0m [1mInitializing jaeger agent [service name: reservation | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:67[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:69[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:74[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:86[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-reservation, id: 8b0ce898-e39c-4a28-8d7f-0301120cd816, address: 10.244.1.171:8087 ][0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mservices/reservation/server.go:99[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/recommendation -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:54Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:54Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:54Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:37[0m[36m >[0m [1mRead database URL: mongodb-recommendation:27017[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:38[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/db.go:25[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/db.go:27[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:41[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:46[0m[36m >[0m [1mRead target port: 8085[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:47[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:48[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:57[0m[36m >[0m [1mInitializing jaeger agent [service name: recommendation | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:62[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:64[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:69[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:80[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-recommendation, id: 39a9e410-e7da-4971-9a83-b0fb6bbb9b55, address: 10.244.1.168:8085 ][0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mservices/recommendation/server.go:97[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/search -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:59Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:59Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:59Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:40[0m[36m >[0m [1mRead target port: 8082[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:41[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:42[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:51[0m[36m >[0m [1mInitializing jaeger agent [service name: search | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:56[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:58[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:63[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:74[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-search, id: 98833421-55f8-49a6-a3c3-746cf1789b33, address: 10.244.1.172:8082 ][0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mservices/search/server.go:100[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/user -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:08:04Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:08:04Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:08:04Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/main.go:37[0m[36m >[0m [1mRead database URL: mongodb-user:27017[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/main.go:38[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/db.go:24[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/db.go:26[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:41[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:45[0m[36m >[0m [1mRead target port: 8086[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:46[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:47[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:56[0m[36m >[0m [1mInitializing jaeger agent [service name: user | host: jaeger:6831]...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:61[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:63[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:68[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:79[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-user, id: da36c41c-410a-457c-a2a7-8aae489ca261, address: 10.244.1.175:8086 ][0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mservices/user/server.go:97[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/geo -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:46Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:46Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:46Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:23[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:36[0m[36m >[0m [1mRead database URL: mongodb-geo:27017[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:37[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/db.go:29[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/db.go:31[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:40[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:45[0m[36m >[0m [1mRead target port: 8083[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:46[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:47[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:55[0m[36m >[0m [1mInitializing jaeger agent [service name: geo | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:61[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:63[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:68[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mcmd/geo/main.go:79[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-geo, id: cded66b9-6d9a-4aa2-99c0-aeb06a0a49fc, address: 10.244.1.158:8083 ][0m
+[90m2025-08-31T03:07:46Z[0m [32mINF[0m [1mservices/geo/server.go:110[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/rate -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:53Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:53Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:53Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:37[0m[36m >[0m [1mRead database URL: mongodb-rate:27017[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:38[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/db.go:39[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/db.go:41[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:41[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:43[0m[36m >[0m [1mRead profile memcashed address: memcached-rate:11211[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:44[0m[36m >[0m [1mInitializing Memcashed client...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mtune/setting.go:61[0m[36m >[0m [1mTune: GetMemCTimeout 2[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:46[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:51[0m[36m >[0m [1mRead target port: 8084[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:52[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:53[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:61[0m[36m >[0m [1mInitializing jaeger agent [service name: rate | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:66[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:68[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:73[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mcmd/rate/main.go:85[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-rate, id: 40b15bb2-3ae9-4cf3-b468-1b13225ab0b7, address: 10.244.1.166:8084 ][0m
+[90m2025-08-31T03:07:53Z[0m [32mINF[0m [1mservices/rate/server.go:99[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get endpoints -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+NAME                     ENDPOINTS                                                            AGE
+consul                   10.244.1.156:8300,10.244.1.156:8400,10.244.1.156:53 + 1 more...      53s
+frontend                 10.244.1.157:5000                                                    53s
+geo                      10.244.1.158:8083                                                    53s
+jaeger                   10.244.1.160:6832,10.244.1.160:14268,10.244.1.160:5775 + 5 more...   53s
+jaeger-out               10.244.1.160:16686                                                   53s
+memcached-profile        10.244.1.161:11211                                                   53s
+memcached-rate           10.244.1.164:11211                                                   53s
+memcached-reserve        10.244.1.169:11211                                                   53s
+mongodb-geo              10.244.1.159:27017                                                   53s
+mongodb-profile          10.244.1.162:27017                                                   53s
+mongodb-rate             10.244.1.165:27017                                                   53s
+mongodb-recommendation   10.244.1.167:27017                                                   53s
+mongodb-reservation      10.244.1.170:27017                                                   53s
+mongodb-user             10.244.1.173:27017                                                   53s
+profile                  10.244.1.163:8081                                                    53s
+rate                     10.244.1.166:8084                                                    53s
+recommendation           10.244.1.168:8085                                                    53s
+reservation              10.244.1.171:8087                                                    53s
+search                   10.244.1.172:8082                                                    53s
+user                     10.244.1.175:8086                                                    53s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod frontend-69d95967fb-8b8vq -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             frontend-69d95967fb-8b8vq
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:07:41 +0000
+Labels:           io.kompose.service=frontend
+                  pod-template-hash=69d95967fb
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.157
+IPs:
+  IP:           10.244.1.157
+Controlled By:  ReplicaSet/frontend-69d95967fb
+Containers:
+  hotel-reserv-frontend:
+    Container ID:  containerd://0a14498855299aede9a77841097efbd2d2d2228bee16b2e3aa6e3cfcdff1178b
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          5000/TCP
+    Host Port:     0/TCP
+    Command:
+      frontend
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:07:45 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-stpv4 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-stpv4:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  54s   default-scheduler  Successfully assigned test-hotel-reservation/frontend-69d95967fb-8b8vq to niko-0830-worker
+  Normal  Pulling    54s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     51s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.625s (3.26s including waiting). Image size: 447625452 bytes.
+  Normal  Created    51s   kubelet            Created container: hotel-reserv-frontend
+  Normal  Started    50s   kubelet            Started container hotel-reserv-frontend
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod reservation-7699b8fdd4-nn85v -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             reservation-7699b8fdd4-nn85v
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:07:43 +0000
+Labels:           io.kompose.service=reservation
+                  pod-template-hash=7699b8fdd4
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.171
+IPs:
+  IP:           10.244.1.171
+Controlled By:  ReplicaSet/reservation-7699b8fdd4
+Containers:
+  hotel-reserv-reservation:
+    Container ID:  containerd://d158d6fcd6299dac7a36cbfd5f83233667aba3bedeecb5d5d2e47136fba9f14a
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          8087/TCP
+    Host Port:     0/TCP
+    Command:
+      reservation
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:07:58 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-ctpfh (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-ctpfh:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  54s   default-scheduler  Successfully assigned test-hotel-reservation/reservation-7699b8fdd4-nn85v to niko-0830-worker
+  Normal  Pulling    54s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     39s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.649s (14.489s including waiting). Image size: 447625452 bytes.
+  Normal  Created    39s   kubelet            Created container: hotel-reserv-reservation
+  Normal  Started    39s   kubelet            Started container hotel-reserv-reservation
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod profile-676fcc86d5-4mtzg -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             profile-676fcc86d5-4mtzg
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:07:41 +0000
+Labels:           io.kompose.service=profile
+                  pod-template-hash=676fcc86d5
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.163
+IPs:
+  IP:           10.244.1.163
+Controlled By:  ReplicaSet/profile-676fcc86d5
+Containers:
+  hotel-reserv-profile:
+    Container ID:  containerd://f8845c847c3c868a17c12990c017de0a66d3d08070cb0c6d6b89740c1eb9f980
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          8081/TCP
+    Host Port:     0/TCP
+    Command:
+      profile
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:07:49 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-s7zq8 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-s7zq8:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  58s   default-scheduler  Successfully assigned test-hotel-reservation/profile-676fcc86d5-4mtzg to niko-0830-worker
+  Normal  Pulling    58s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     50s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.644s (7.89s including waiting). Image size: 447625452 bytes.
+  Normal  Created    50s   kubelet            Created container: hotel-reserv-profile
+  Normal  Started    50s   kubelet            Started container hotel-reserv-profile
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod recommendation-8675c6c9ff-wkxhz -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             recommendation-8675c6c9ff-wkxhz
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:07:42 +0000
+Labels:           io.kompose.service=recommendation
+                  pod-template-hash=8675c6c9ff
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.168
+IPs:
+  IP:           10.244.1.168
+Controlled By:  ReplicaSet/recommendation-8675c6c9ff
+Containers:
+  hotel-reserv-recommendation:
+    Container ID:  containerd://f9a5d810c2f6aee5d5680979ecc43b2cde90b5bf7bd6d189f4665b0369dc6214
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          8085/TCP
+    Host Port:     0/TCP
+    Command:
+      recommendation
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:07:54 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-29pbb (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-29pbb:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  59s   default-scheduler  Successfully assigned test-hotel-reservation/recommendation-8675c6c9ff-wkxhz to niko-0830-worker
+  Normal  Pulling    59s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     47s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.663s (11.871s including waiting). Image size: 447625452 bytes.
+  Normal  Created    47s   kubelet            Created container: hotel-reserv-recommendation
+  Normal  Started    47s   kubelet            Started container hotel-reserv-recommendation
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod search-65df96d8df-gcf46 -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             search-65df96d8df-gcf46
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:07:43 +0000
+Labels:           io.kompose.service=search
+                  pod-template-hash=65df96d8df
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.172
+IPs:
+  IP:           10.244.1.172
+Controlled By:  ReplicaSet/search-65df96d8df
+Containers:
+  hotel-reserv-search:
+    Container ID:  containerd://b2fa488835c6399aa2737e0994173437e0972d738226bed382d83d8a22452dd1
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          8082/TCP
+    Host Port:     0/TCP
+    Command:
+      search
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:07:59 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-q9qgd (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-q9qgd:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  60s   default-scheduler  Successfully assigned test-hotel-reservation/search-65df96d8df-gcf46 to niko-0830-worker
+  Normal  Pulling    60s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     44s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.631s (15.929s including waiting). Image size: 447625452 bytes.
+  Normal  Created    44s   kubelet            Created container: hotel-reserv-search
+  Normal  Started    44s   kubelet            Started container hotel-reserv-search
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod user-8477d787d8-z7g5f -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             user-8477d787d8-z7g5f
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:08:02 +0000
+Labels:           io.kompose.service=user
+                  pod-template-hash=8477d787d8
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.175
+IPs:
+  IP:           10.244.1.175
+Controlled By:  ReplicaSet/user-8477d787d8
+Containers:
+  hotel-reserv-user:
+    Container ID:  containerd://dce8328bbf810670088b3671ea2f3460a539b08390968538886ccc9ab9bfa2a5
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          8086/TCP
+    Host Port:     0/TCP
+    Command:
+      user
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:08:04 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-gh7vj (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-gh7vj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  43s   default-scheduler  Successfully assigned test-hotel-reservation/user-8477d787d8-z7g5f to niko-0830-worker
+  Normal  Pulling    42s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     41s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.655s (1.655s including waiting). Image size: 447625452 bytes.
+  Normal  Created    41s   kubelet            Created container: hotel-reserv-user
+  Normal  Started    41s   kubelet            Started container hotel-reserv-user
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod geo-99d8c58c-vbz67 -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             geo-99d8c58c-vbz67
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:07:41 +0000
+Labels:           io.kompose.service=geo
+                  pod-template-hash=99d8c58c
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.158
+IPs:
+  IP:           10.244.1.158
+Controlled By:  ReplicaSet/geo-99d8c58c
+Containers:
+  hotel-reserv-geo:
+    Container ID:  containerd://62c99e9a90ecfae1c87762f7fd7e1cbb4469087dc2ba06473e57f13b23194c55
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          8083/TCP
+    Host Port:     0/TCP
+    Command:
+      geo
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:07:46 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mz5nr (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-mz5nr:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  65s   default-scheduler  Successfully assigned test-hotel-reservation/geo-99d8c58c-vbz67 to niko-0830-worker
+  Normal  Pulling    65s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     60s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.652s (4.881s including waiting). Image size: 447625452 bytes.
+  Normal  Created    60s   kubelet            Created container: hotel-reserv-geo
+  Normal  Started    60s   kubelet            Started container hotel-reserv-geo
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod rate-99c58c85-2t644 -n test-hotel-reservation")
+```
+[ERROR] Docker command execution failed: Error from server (NotFound): pods "rate-99c58c85-2t644" not found
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -l io.kompose.service=rate -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+NAME                   READY   STATUS    RESTARTS   AGE
+rate-c9bc58c85-2t644   1/1     Running   0          68s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod rate-c9bc58c85-2t644 -n test-hotel-reservation")
+```
+===== Output Message from docker ====
+Name:             rate-c9bc58c85-2t644
+Namespace:        test-hotel-reservation
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 03:07:41 +0000
+Labels:           io.kompose.service=rate
+                  pod-template-hash=c9bc58c85
+Annotations:      kompose.cmd: kompose convert
+                  kompose.version: 1.22.0 (955b78124)
+                  sidecar.istio.io/statsInclusionPrefixes:
+                    cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+                  sidecar.istio.io/statsInclusionRegexps: http.*
+Status:           Running
+IP:               10.244.1.166
+IPs:
+  IP:           10.244.1.166
+Controlled By:  ReplicaSet/rate-c9bc58c85
+Containers:
+  hotel-reserv-rate:
+    Container ID:  containerd://771ff17a10175e391fd1abf33f18c7816aca28b0c50ed989215261facd42e36a
+    Image:         yinfangchen/hotelreservation:latest
+    Image ID:      docker.io/yinfangchen/hotelreservation@sha256:c46c018d412ab466c4cb3ae93b1aaf1a373968e2fafc2767f15539f50cd1683a
+    Port:          8084/TCP
+    Host Port:     0/TCP
+    Command:
+      rate
+    State:          Running
+      Started:      Sun, 31 Aug 2025 03:07:53 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      JAEGER_SAMPLE_RATIO:  1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-9z92j (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-9z92j:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  70s   default-scheduler  Successfully assigned test-hotel-reservation/rate-c9bc58c85-2t644 to niko-0830-worker
+  Normal  Pulling    69s   kubelet            Pulling image "yinfangchen/hotelreservation:latest"
+  Normal  Pulled     58s   kubelet            Successfully pulled image "yinfangchen/hotelreservation:latest" in 1.634s (10.771s including waiting). Image size: 447625452 bytes.
+  Normal  Created    58s   kubelet            Created container: hotel-reserv-rate
+  Normal  Started    58s   kubelet            Started container hotel-reserv-rate
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get svc -n test-hotel-reservation | grep -E '(frontend|reservation|profile|recommendation|search|user|geo|rate)'")
+```
+===== Output Message from docker ====
+frontend                 ClusterIP   10.96.195.204   <none>        5000/TCP                                                                      72s
+geo                      ClusterIP   10.96.167.116   <none>        8083/TCP                                                                      72s
+memcached-profile        ClusterIP   10.96.39.137    <none>        11211/TCP                                                                     72s
+memcached-rate           ClusterIP   10.96.152.40    <none>        11211/TCP                                                                     72s
+mongodb-geo              ClusterIP   10.96.254.27    <none>        27017/TCP                                                                     72s
+mongodb-profile          ClusterIP   10.96.88.244    <none>        27017/TCP                                                                     72s
+mongodb-rate             ClusterIP   10.96.114.197   <none>        27017/TCP                                                                     72s
+mongodb-recommendation   ClusterIP   10.96.122.103   <none>        27017/TCP                                                                     72s
+mongodb-reservation      ClusterIP   10.96.20.124    <none>        27017/TCP                                                                     72s
+mongodb-user             ClusterIP   10.96.167.179   <none>        27017/TCP                                                                     72s
+profile                  ClusterIP   10.96.186.224   <none>        8081/TCP                                                                      72s
+rate                     ClusterIP   10.96.32.93     <none>        8084/TCP                                                                      72s
+recommendation           ClusterIP   10.96.7.39      <none>        8085/TCP                                                                      72s
+reservation              ClusterIP   10.96.144.61    <none>        8087/TCP                                                                      72s
+search                   ClusterIP   10.96.201.185   <none>        8082/TCP                                                                      72s
+user                     ClusterIP   10.96.128.234   <none>        8086/TCP                                                                      72s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get endpoints -n test-hotel-reservation | grep -E '(frontend|reservation|profile|recommendation|search|user|geo|rate)'")
+```
+===== Output Message from docker ====
+frontend                 10.244.1.157:5000                                                    73s
+geo                      10.244.1.158:8083                                                    73s
+memcached-profile        10.244.1.161:11211                                                   73s
+memcached-rate           10.244.1.164:11211                                                   73s
+mongodb-geo              10.244.1.159:27017                                                   73s
+mongodb-profile          10.244.1.162:27017                                                   73s
+mongodb-rate             10.244.1.165:27017                                                   73s
+mongodb-recommendation   10.244.1.167:27017                                                   73s
+mongodb-reservation      10.244.1.170:27017                                                   73s
+mongodb-user             10.244.1.173:27017                                                   73s
+profile                  10.244.1.163:8081                                                    73s
+rate                     10.244.1.166:8084                                                    73s
+recommendation           10.244.1.168:8085                                                    73s
+reservation              10.244.1.171:8087                                                    73s
+search                   10.244.1.172:8082                                                    73s
+user                     10.244.1.175:8086                                                    73s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-hotel-reservation -o wide")
+```
+===== Output Message from docker ====
+NAME                                      READY   STATUS    RESTARTS   AGE   IP             NODE               NOMINATED NODE   READINESS GATES
+consul-b84877fb4-qsjrj                    1/1     Running   0          75s   10.244.1.156   niko-0830-worker   <none>           <none>
+frontend-69d95967fb-8b8vq                 1/1     Running   0          75s   10.244.1.157   niko-0830-worker   <none>           <none>
+geo-99d8c58c-vbz67                        1/1     Running   0          75s   10.244.1.158   niko-0830-worker   <none>           <none>
+jaeger-67445b6dd6-n6b7v                   1/1     Running   0          75s   10.244.1.160   niko-0830-worker   <none>           <none>
+memcached-profile-66bb9c8b9d-lwmnq        1/1     Running   0          75s   10.244.1.161   niko-0830-worker   <none>           <none>
+memcached-rate-68585796cb-6ckq5           1/1     Running   0          75s   10.244.1.164   niko-0830-worker   <none>           <none>
+memcached-reserve-646c7dcd6b-brg5j        1/1     Running   0          74s   10.244.1.169   niko-0830-worker   <none>           <none>
+mongodb-geo-5ff578bcb8-lmm67              1/1     Running   0          75s   10.244.1.159   niko-0830-worker   <none>           <none>
+mongodb-profile-758cb77f9f-rhf2c          1/1     Running   0          75s   10.244.1.162   niko-0830-worker   <none>           <none>
+mongodb-rate-56cc8659c9-d42sm             1/1     Running   0          75s   10.244.1.165   niko-0830-worker   <none>           <none>
+mongodb-recommendation-55699465f7-xkqhd   1/1     Running   0          74s   10.244.1.167   niko-0830-worker   <none>           <none>
+mongodb-reservation-5994859869-8b8sp      1/1     Running   0          73s   10.244.1.170   niko-0830-worker   <none>           <none>
+mongodb-user-969c6c449-4ppk2              1/1     Running   0          73s   10.244.1.173   niko-0830-worker   <none>           <none>
+profile-676fcc86d5-4mtzg                  1/1     Running   0          75s   10.244.1.163   niko-0830-worker   <none>           <none>
+rate-c9bc58c85-2t644                      1/1     Running   0          75s   10.244.1.166   niko-0830-worker   <none>           <none>
+recommendation-8675c6c9ff-wkxhz           1/1     Running   0          74s   10.244.1.168   niko-0830-worker   <none>           <none>
+reservation-7699b8fdd4-nn85v              1/1     Running   0          73s   10.244.1.171   niko-0830-worker   <none>           <none>
+search-65df96d8df-gcf46                   1/1     Running   0          73s   10.244.1.172   niko-0830-worker   <none>           <none>
+user-8477d787d8-z7g5f                     1/1     Running   0          54s   10.244.1.175   niko-0830-worker   <none>           <none>
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/frontend -n test-hotel-reservation --tail=20")
+```
+===== Output Message from docker ====
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:60[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mcmd/frontend/main.go:70[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:45[0m[36m >[0m [1mInitializing gRPC clients...[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-search.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-profile.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-recommendation.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-user.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:138[0m[36m >[0m [1mget Grpc conn is :[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:139[0m[36m >[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:140[0m[36m >[0m [1msrv-reservation.[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:65[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:45Z[0m [32mINF[0m [1mservices/frontend/server.go:87[0m[36m >[0m [1mServing http[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/reservation -n test-hotel-reservation --tail=20")
+```
+===== Output Message from docker ====
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:25[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:38[0m[36m >[0m [1mRead database URL: mongodb-reservation:27017[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:39[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/db.go:30[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:42[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:44[0m[36m >[0m [1mRead profile memcashed address: memcached-reserve:11211[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:45[0m[36m >[0m [1mInitializing Memcashed client...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mtune/setting.go:61[0m[36m >[0m [1mTune: GetMemCTimeout 2[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:47[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:51[0m[36m >[0m [1mRead target port: 8087[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:52[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:53[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:62[0m[36m >[0m [1mInitializing jaeger agent [service name: reservation | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:67[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:69[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:74[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mcmd/reservation/main.go:86[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-reservation, id: 8b0ce898-e39c-4a28-8d7f-0301120cd816, address: 10.244.1.171:8087 ][0m
+[90m2025-08-31T03:07:58Z[0m [32mINF[0m [1mservices/reservation/server.go:99[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/profile -n test-hotel-reservation --tail=20")
+```
+===== Output Message from docker ====
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:37[0m[36m >[0m [1mRead database URL: mongodb-profile:27017[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:38[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/db.go:36[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/db.go:38[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:41[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:43[0m[36m >[0m [1mRead profile memcashed address: memcached-profile:11211[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:44[0m[36m >[0m [1mInitializing Memcashed client...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mtune/setting.go:61[0m[36m >[0m [1mTune: GetMemCTimeout 2[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:46[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:50[0m[36m >[0m [1mRead target port: 8081[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:51[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:52[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:61[0m[36m >[0m [1mInitializing jaeger agent [service name: profile | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:66[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:68[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:73[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mcmd/profile/main.go:85[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-profile, id: 0451e4b7-b6b1-4abc-a615-6b9fd4c34566, address: 10.244.1.163:8081 ][0m
+[90m2025-08-31T03:07:49Z[0m [32mINF[0m [1mservices/profile/server.go:99[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/recommendation -n test-hotel-reservation --tail=20")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:54Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:54Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:54Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:37[0m[36m >[0m [1mRead database URL: mongodb-recommendation:27017[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:38[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/db.go:25[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/db.go:27[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:41[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:46[0m[36m >[0m [1mRead target port: 8085[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:47[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:48[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:57[0m[36m >[0m [1mInitializing jaeger agent [service name: recommendation | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:62[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:64[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:69[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mcmd/recommendation/main.go:80[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-recommendation, id: 39a9e410-e7da-4971-9a83-b0fb6bbb9b55, address: 10.244.1.168:8085 ][0m
+[90m2025-08-31T03:07:54Z[0m [32mINF[0m [1mservices/recommendation/server.go:97[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/search -n test-hotel-reservation --tail=20")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:07:59Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:07:59Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:07:59Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:40[0m[36m >[0m [1mRead target port: 8082[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:41[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:42[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:51[0m[36m >[0m [1mInitializing jaeger agent [service name: search | host: jaeger:6831]...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:56[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:58[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:63[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mcmd/search/main.go:74[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-search, id: 98833421-55f8-49a6-a3c3-746cf1789b33, address: 10.244.1.172:8082 ][0m
+[90m2025-08-31T03:07:59Z[0m [32mINF[0m [1mservices/search/server.go:100[0m[36m >[0m [1mSuccessfully registered in consul[0m
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs deployment/user -n test-hotel-reservation --tail=20")
+```
+===== Output Message from docker ====
+{"level":"info","time":"2025-08-31T03:08:04Z","message":"TLS disabled."}
+{"level":"info","time":"2025-08-31T03:08:04Z","message":"Set global log level: info"}
+{"level":"info","time":"2025-08-31T03:08:04Z","message":"Tune: setGCPercent to 100"}
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/main.go:24[0m[36m >[0m [1mReading config...[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/main.go:37[0m[36m >[0m [1mRead database URL: mongodb-user:27017[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/main.go:38[0m[36m >[0m [1mInitializing DB connection...[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/db.go:24[0m[36m >[0m [1mNew session successfull...[0m
+[90m2025-08-31T03:08:04Z[0m [32mINF[0m [1mcmd/user/db.go:26[0m[36m >[0m [1mGenerating test data...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:41[0m[36m >[0m [1mSuccessfull[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:45[0m[36m >[0m [1mRead target port: 8086[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:46[0m[36m >[0m [1mRead consul address: consul:8500[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:47[0m[36m >[0m [1mRead jaeger address: jaeger:6831[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:56[0m[36m >[0m [1mInitializing jaeger agent [service name: user | host: jaeger:6831]...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mtracing/tracer.go:26[0m[36m >[0m [1mJaeger client: adjusted sample ratio 1.000000[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:61[0m[36m >[0m [1mJaeger agent initialized[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:63[0m[36m >[0m [1mInitializing consul agent [host: consul:8500]...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:68[0m[36m >[0m [1mConsul agent initialized[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mcmd/user/main.go:79[0m[36m >[0m [1mStarting server...[0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mregistry/registry.go:91[0m[36m >[0m [1mTrying to register service [ name: srv-user, id: da36c41c-410a-457c-a2a7-8aae489ca261, address: 10.244.1.175:8086 ][0m
+[90m2025-08-31T03:08:05Z[0m [32mINF[0m [1mservices/user/server.go:97[0m[36m >[0m [1mSuccessfully registered in consul[0m
