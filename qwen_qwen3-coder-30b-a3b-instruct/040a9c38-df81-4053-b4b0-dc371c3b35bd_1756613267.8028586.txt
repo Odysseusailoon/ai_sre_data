@@ -1,0 +1,468 @@
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop")
+```
+===== Output Message from docker ====
+NAME                               READY   STATUS     RESTARTS      AGE
+accounting-567f87bbcd-qbjnm        1/1     Running    0             43s
+ad-94bd576b5-tlmh7                 1/1     Running    1 (35s ago)   43s
+cart-6fd857c656-jfknp              1/1     Running    0             44s
+checkout-5bc54f8cd8-4qn9m          1/1     Running    0             42s
+currency-5864f94d89-rldpd          1/1     Running    0             44s
+email-59d9ffc758-m24tr             1/1     Running    0             43s
+flagd-6ccf4666b6-nwxb2             0/2     Init:0/1   0             1s
+flagd-86575d5796-nw9rw             2/2     Running    0             44s
+fraud-detection-65868bcdb5-94h4r   1/1     Running    2 (16s ago)   44s
+frontend-7d6b77c58-5p7np           1/1     Running    0             41s
+frontend-proxy-548b4649d7-ftq27    1/1     Running    0             44s
+grafana-6b9fb84fb7-fp7x5           1/1     Running    0             41s
+image-provider-7f5bc6bf-dtfwq      1/1     Running    0             44s
+jaeger-55f499595b-7fb2h            1/1     Running    0             41s
+kafka-6494b5cf67-sft4t             1/1     Running    0             44s
+load-generator-68b6f899f5-f8r66    1/1     Running    0             44s
+opensearch-0                       1/1     Running    0             44s
+otel-collector-758b8784c-xx958     1/1     Running    0             44s
+payment-7597577cb5-q7sc8           1/1     Running    0             43s
+product-catalog-6988cd5f49-chrb9   1/1     Running    0             42s
+prometheus-58b7bfb774-l6kq2        1/1     Running    0             44s
+quote-78bf8788-r59ct               1/1     Running    0             44s
+recommendation-7b49c8cb75-m6std    1/1     Running    0             42s
+shipping-7f445d59dc-n8mx6          1/1     Running    0             42s
+valkey-cart-6475dcc67f-xz5qs       1/1     Running    0             44s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop --show-labels")
+```
+===== Output Message from docker ====
+NAME                               READY   STATUS     RESTARTS      AGE   LABELS
+accounting-567f87bbcd-qbjnm        1/1     Running    0             45s   app.kubernetes.io/component=accounting,app.kubernetes.io/name=accounting,opentelemetry.io/name=accounting,pod-template-hash=567f87bbcd
+ad-94bd576b5-tlmh7                 1/1     Running    1 (37s ago)   45s   app.kubernetes.io/component=ad,app.kubernetes.io/name=ad,opentelemetry.io/name=ad,pod-template-hash=94bd576b5
+cart-6fd857c656-jfknp              1/1     Running    0             46s   app.kubernetes.io/component=cart,app.kubernetes.io/name=cart,opentelemetry.io/name=cart,pod-template-hash=6fd857c656
+checkout-5bc54f8cd8-4qn9m          1/1     Running    0             44s   app.kubernetes.io/component=checkout,app.kubernetes.io/name=checkout,opentelemetry.io/name=checkout,pod-template-hash=5bc54f8cd8
+currency-5864f94d89-rldpd          1/1     Running    0             46s   app.kubernetes.io/component=currency,app.kubernetes.io/name=currency,opentelemetry.io/name=currency,pod-template-hash=5864f94d89
+email-59d9ffc758-m24tr             1/1     Running    0             45s   app.kubernetes.io/component=email,app.kubernetes.io/name=email,opentelemetry.io/name=email,pod-template-hash=59d9ffc758
+flagd-6ccf4666b6-nwxb2             0/2     Init:0/1   0             3s    app.kubernetes.io/component=flagd,app.kubernetes.io/name=flagd,opentelemetry.io/name=flagd,pod-template-hash=6ccf4666b6
+flagd-86575d5796-nw9rw             2/2     Running    0             46s   app.kubernetes.io/component=flagd,app.kubernetes.io/name=flagd,opentelemetry.io/name=flagd,pod-template-hash=86575d5796
+fraud-detection-65868bcdb5-94h4r   1/1     Running    2 (18s ago)   46s   app.kubernetes.io/component=fraud-detection,app.kubernetes.io/name=fraud-detection,opentelemetry.io/name=fraud-detection,pod-template-hash=65868bcdb5
+frontend-7d6b77c58-5p7np           1/1     Running    0             43s   app.kubernetes.io/component=frontend,app.kubernetes.io/name=frontend,opentelemetry.io/name=frontend,pod-template-hash=7d6b77c58
+frontend-proxy-548b4649d7-ftq27    1/1     Running    0             46s   app.kubernetes.io/component=frontend-proxy,app.kubernetes.io/name=frontend-proxy,opentelemetry.io/name=frontend-proxy,pod-template-hash=548b4649d7
+grafana-6b9fb84fb7-fp7x5           1/1     Running    0             43s   app.kubernetes.io/instance=astronomy-shop,app.kubernetes.io/name=grafana,app.kubernetes.io/version=12.1.0,helm.sh/chart=grafana-9.3.2,pod-template-hash=6b9fb84fb7
+image-provider-7f5bc6bf-dtfwq      1/1     Running    0             46s   app.kubernetes.io/component=image-provider,app.kubernetes.io/name=image-provider,opentelemetry.io/name=image-provider,pod-template-hash=7f5bc6bf
+jaeger-55f499595b-7fb2h            1/1     Running    0             43s   app.kubernetes.io/component=all-in-one,app.kubernetes.io/instance=astronomy-shop,app.kubernetes.io/name=jaeger,pod-template-hash=55f499595b
+kafka-6494b5cf67-sft4t             1/1     Running    0             46s   app.kubernetes.io/component=kafka,app.kubernetes.io/name=kafka,opentelemetry.io/name=kafka,pod-template-hash=6494b5cf67
+load-generator-68b6f899f5-f8r66    1/1     Running    0             46s   app.kubernetes.io/component=load-generator,app.kubernetes.io/name=load-generator,opentelemetry.io/name=load-generator,pod-template-hash=68b6f899f5
+opensearch-0                       1/1     Running    0             46s   app.kubernetes.io/component=opensearch,app.kubernetes.io/instance=astronomy-shop,app.kubernetes.io/managed-by=Helm,app.kubernetes.io/name=opensearch,app.kubernetes.io/version=2.19.3,apps.kubernetes.io/pod-index=0,controller-revision-hash=opensearch-579f969b6b,helm.sh/chart=opensearch-2.35.0,statefulset.kubernetes.io/pod-name=opensearch-0
+otel-collector-758b8784c-xx958     1/1     Running    0             46s   app.kubernetes.io/instance=astronomy-shop,app.kubernetes.io/name=opentelemetry-collector,component=standalone-collector,pod-template-hash=758b8784c
+payment-7597577cb5-q7sc8           1/1     Running    0             45s   app.kubernetes.io/component=payment,app.kubernetes.io/name=payment,opentelemetry.io/name=payment,pod-template-hash=7597577cb5
+product-catalog-6988cd5f49-chrb9   1/1     Running    0             44s   app.kubernetes.io/component=product-catalog,app.kubernetes.io/name=product-catalog,opentelemetry.io/name=product-catalog,pod-template-hash=6988cd5f49
+prometheus-58b7bfb774-l6kq2        1/1     Running    0             46s   app.kubernetes.io/component=server,app.kubernetes.io/instance=astronomy-shop,app.kubernetes.io/name=prometheus,app.kubernetes.io/part-of=prometheus,app.kubernetes.io/version=v3.5.0,helm.sh/chart=prometheus-27.30.0,pod-template-hash=58b7bfb774
+quote-78bf8788-r59ct               1/1     Running    0             46s   app.kubernetes.io/component=quote,app.kubernetes.io/name=quote,opentelemetry.io/name=quote,pod-template-hash=78bf8788
+recommendation-7b49c8cb75-m6std    1/1     Running    0             44s   app.kubernetes.io/component=recommendation,app.kubernetes.io/name=recommendation,opentelemetry.io/name=recommendation,pod-template-hash=7b49c8cb75
+shipping-7f445d59dc-n8mx6          1/1     Running    0             44s   app.kubernetes.io/component=shipping,app.kubernetes.io/name=shipping,opentelemetry.io/name=shipping,pod-template-hash=7f445d59dc
+valkey-cart-6475dcc67f-xz5qs       1/1     Running    0             46s   app.kubernetes.io/component=valkey-cart,app.kubernetes.io/name=valkey-cart,opentelemetry.io/name=valkey-cart,pod-template-hash=6475dcc67f
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod flagd-6ccf4666b6-nwxb2 -n astronomy-shop")
+```
+===== Output Message from docker ====
+Name:             flagd-6ccf4666b6-nwxb2
+Namespace:        astronomy-shop
+Priority:         0
+Service Account:  astronomy-shop
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 04:07:47 +0000
+Labels:           app.kubernetes.io/component=flagd
+                  app.kubernetes.io/name=flagd
+                  opentelemetry.io/name=flagd
+                  pod-template-hash=6ccf4666b6
+Annotations:      kubectl.kubernetes.io/restartedAt: 2025-08-31T04:07:47Z
+Status:           Pending
+IP:               10.244.1.18
+IPs:
+  IP:           10.244.1.18
+Controlled By:  ReplicaSet/flagd-6ccf4666b6
+Init Containers:
+  init-config:
+    Container ID:  containerd://39edd934a19355fe09afd1eb2978ebf3fd840657a4243b5218689eee475e820f
+    Image:         busybox
+    Image ID:      docker.io/library/busybox@sha256:ab33eacc8251e3807b85bb6dba570e4698c3998eca6f0fc2ccb60575a563ea74
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+      cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json && cat /config-rw/demo.flagd.json
+    State:          Running
+      Started:      Sun, 31 Aug 2025 04:07:50 +0000
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /config-ro from config-ro (rw)
+      /config-rw from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-zrxqw (ro)
+Containers:
+  flagd:
+    Container ID:  
+    Image:         ghcr.io/open-feature/flagd:v0.12.8
+    Image ID:      
+    Ports:         8013/TCP, 8016/TCP
+    Host Ports:    0/TCP, 0/TCP
+    Command:
+      /flagd-build
+      start
+      --port
+      8013
+      --ofrep-port
+      8016
+      --uri
+      file:./etc/flagd/demo.flagd.json
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      memory:  75Mi
+    Requests:
+      memory:  75Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      FLAGD_METRICS_EXPORTER:                             otel
+      FLAGD_OTEL_COLLECTOR_URI:                           $(OTEL_COLLECTOR_NAME):4317
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /etc/flagd from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-zrxqw (ro)
+  flagd-ui:
+    Container ID:   
+    Image:          ghcr.io/open-telemetry/demo:2.0.2-flagd-ui
+    Image ID:       
+    Port:           4000/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      memory:  100Mi
+    Requests:
+      memory:  100Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      FLAGD_METRICS_EXPORTER:                             otel
+      OTEL_EXPORTER_OTLP_ENDPOINT:                        http://$(OTEL_COLLECTOR_NAME):4318
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /app/data from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-zrxqw (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 False 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  config-rw:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config-ro:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      flagd-config
+    Optional:  false
+  kube-api-access-zrxqw:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  4s    default-scheduler  Successfully assigned astronomy-shop/flagd-6ccf4666b6-nwxb2 to niko-0830-worker
+  Normal  Pulling    3s    kubelet            Pulling image "busybox"
+  Normal  Pulled     1s    kubelet            Successfully pulled image "busybox" in 2.346s (2.346s including waiting). Image size: 2223685 bytes.
+  Normal  Created    1s    kubelet            Created container: init-config
+  Normal  Started    1s    kubelet            Started container init-config
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs pod flagd-6ccf4666b6-nwxb2 -n astronomy-shop --all-containers=true")
+```
+[ERROR] Docker command execution failed: error: error from server (NotFound): pods "pod" not found in namespace "astronomy-shop"
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs flagd-6ccf4666b6-nwxb2 -n astronomy-shop --all-containers=true")
+```
+===== Output Message from docker ====
+
+> flagd-ui@0.1.0 start
+> next start -p 4000 -H 0.0.0.0
+
+   ▲ Next.js 15.2.0
+   - Local:        http://localhost:4000
+   - Network:      http://0.0.0.0:4000
+
+ ✓ Starting...
+ ✓ Ready in 618ms
+{
+  "$schema": "https://flagd.dev/schema/v0/flags.json",
+  "flags": {
+    "productCatalogFailure": {
+      "description": "Fail product catalog service on a specific product",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "recommendationCacheFailure": {
+      "description": "Fail recommendation service cache",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "adManualGc": {
+      "description": "Triggers full manual garbage collections in the ad service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "adHighCpu": {
+      "description": "Triggers high cpu load in the ad service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "adFailure": {
+      "description": "Fail ad service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "kafkaQueueProblems": {
+      "description": "Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike",
+      "state": "ENABLED",
+      "variants": {
+        "on": 100,
+        "off": 0
+      },
+      "defaultVariant": "off"
+    },
+    "cartFailure": {
+      "description": "Fail cart service",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "paymentFailure": {
+      "description": "Fail payment service charge requests n%",
+      "state": "ENABLED",
+      "variants": {
+        "100%": 1,
+        "90%": 0.95,
+        "75%": 0.75,
+        "50%": 0.5,
+        "25%": 0.25,
+        "10%": 0.1,
+        "off": 0
+      },
+      "defaultVariant": "off"
+    },
+    "paymentUnreachable": {
+      "description": "Payment service is unavailable",
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off"
+    },
+    "loadGeneratorFloodHomepage": {
+      "description": "Flood the frontend with a large amount of requests.",
+      "state": "ENABLED",
+      "variants": {
+        "on": 100,
+        "off": 0
+      },
+      "defaultVariant": "off"
+    },
+    "imageSlowLoad": {
+      "description": "slow loading images in the frontend",
+      "state": "ENABLED",
+      "variants": {
+        "10sec": 10000,
+        "5sec": 5000,
+        "off": 0
+      },
+      "defaultVariant": "on"
+    }
+  }
+}
+		 ______   __       ________   _______    ______      
+		/_____/\ /_/\     /_______/\ /______/\  /_____/\     
+		\::::_\/_\:\ \    \::: _  \ \\::::__\/__\:::_ \ \    
+		 \:\/___/\\:\ \    \::(_)  \ \\:\ /____/\\:\ \ \ \   
+		  \:::._\/ \:\ \____\:: __  \ \\:\\_  _\/ \:\ \ \ \  
+		   \:\ \    \:\/___/\\:.\ \  \ \\:\_\ \ \  \:\/.:| | 
+		    \_\/     \_____\/ \__\/\__\/ \_____\/   \____/_/ 
+
+2025-08-31T04:07:52.140Z	info	cmd/start.go:140	flagd version: v0.12.8 (c0a2940aef33f8558aa6ea4941ded74f0a6f6e83), built at: 2025-07-23	{"component": "start"}
+2025-08-31T04:07:52.141Z	info	flag-sync/sync_service.go:96	starting flag sync service on port 8015	{"component": "FlagSyncService"}
+2025-08-31T04:07:52.142Z	info	file/filepath_sync.go:60	Starting filepath sync notifier	{"component": "sync", "sync": "fsnotify"}
+2025-08-31T04:07:52.142Z	info	file/filepath_sync.go:99	watching filepath: ./etc/flagd/demo.flagd.json	{"component": "sync", "sync": "fsnotify"}
+2025-08-31T04:07:52.142Z	info	ofrep/ofrep_service.go:58	ofrep service listening at 8016	{"component": "OFREPService"}
+2025-08-31T04:07:52.142Z	info	flag-evaluation/connect_service.go:251	metrics and probes listening at 8014	{"component": "service"}
+2025-08-31T04:07:52.143Z	info	flag-evaluation/connect_service.go:231	Flag IResolver listening at [::]:8013	{"component": "service"}
+2025-08-31T04:07:52.148Z	error	runtime/runtime.go:146	default variant: 'on' isn't a valid variant of flag: 'imageSlowLoad'	{"component": "runtime"}
+github.com/open-feature/flagd/flagd/pkg/runtime.(*Runtime).updateAndEmit
+	/src/flagd/pkg/runtime/runtime.go:146
+github.com/open-feature/flagd/flagd/pkg/runtime.(*Runtime).Start.func1
+	/src/flagd/pkg/runtime/runtime.go:56
+golang.org/x/sync/errgroup.(*Group).add.func1
+	/go/pkg/mod/golang.org/x/sync@v0.15.0/errgroup/errgroup.go:128
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod fraud-detection-65868bcdb5-94h4r -n astronomy-shop")
+```
+===== Output Message from docker ====
+Name:             fraud-detection-65868bcdb5-94h4r
+Namespace:        astronomy-shop
+Priority:         0
+Service Account:  astronomy-shop
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 04:07:04 +0000
+Labels:           app.kubernetes.io/component=fraud-detection
+                  app.kubernetes.io/name=fraud-detection
+                  opentelemetry.io/name=fraud-detection
+                  pod-template-hash=65868bcdb5
+Annotations:      <none>
+Status:           Running
+IP:               10.244.1.249
+IPs:
+  IP:           10.244.1.249
+Controlled By:  ReplicaSet/fraud-detection-65868bcdb5
+Init Containers:
+  wait-for-kafka:
+    Container ID:  containerd://88946fc5c9b596681ad34c786e92e9c6b670ec2317072a48ff644dde612781df
+    Image:         busybox:latest
+    Image ID:      docker.io/library/busybox@sha256:ab33eacc8251e3807b85bb6dba570e4698c3998eca6f0fc2ccb60575a563ea74
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+      until nc -z -v -w30 kafka 9092; do echo waiting for kafka; sleep 2; done;
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sun, 31 Aug 2025 04:07:06 +0000
+      Finished:     Sun, 31 Aug 2025 04:07:26 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-qlrbq (ro)
+Containers:
+  fraud-detection:
+    Container ID:   containerd://112e45b3ef2631f9cf835a8b9bf665fed60a29dde50d27c853278eea4c765f77
+    Image:          ghcr.io/open-telemetry/demo:2.0.2-fraud-detection
+    Image ID:       ghcr.io/open-telemetry/demo@sha256:8b0a841c19f583a83b150bbd0609d85b3f09d19a75888d716bb234098f3385b4
+    Port:           <none>
+    Host Port:      <none>
+    State:          Terminated
+      Reason:       OOMKilled
+      Exit Code:    137
+      Started:      Sun, 31 Aug 2025 04:07:45 +0000
+      Finished:     Sun, 31 Aug 2025 04:07:50 +0000
+    Last State:     Terminated
+      Reason:       OOMKilled
+      Exit Code:    137
+      Started:      Sun, 31 Aug 2025 04:07:30 +0000
+      Finished:     Sun, 31 Aug 2025 04:07:32 +0000
+    Ready:          False
+    Restart Count:  2
+    Limits:
+      memory:  300Mi
+    Requests:
+      memory:  300Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      KAFKA_ADDR:                                         kafka:9092
+      FLAGD_HOST:                                         flagd
+      FLAGD_PORT:                                         8013
+      OTEL_EXPORTER_OTLP_ENDPOINT:                        http://$(OTEL_COLLECTOR_NAME):4318
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-qlrbq (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-qlrbq:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  52s                default-scheduler  Successfully assigned astronomy-shop/fraud-detection-65868bcdb5-94h4r to niko-0830-worker
+  Normal   Pulling    52s                kubelet            Pulling image "busybox:latest"
+  Normal   Pulled     50s                kubelet            Successfully pulled image "busybox:latest" in 1.62s (1.62s including waiting). Image size: 2223685 bytes.
+  Normal   Created    50s                kubelet            Created container: wait-for-kafka
+  Normal   Started    50s                kubelet            Started container wait-for-kafka
+  Normal   Pulled     11s (x3 over 30s)  kubelet            Container image "ghcr.io/open-telemetry/demo:2.0.2-fraud-detection" already present on machine
+  Normal   Created    11s (x3 over 30s)  kubelet            Created container: fraud-detection
+  Normal   Started    11s (x3 over 29s)  kubelet            Started container fraud-detection
+  Warning  BackOff    6s (x2 over 24s)   kubelet            Back-off restarting failed container fraud-detection in pod fraud-detection-65868bcdb5-94h4r_astronomy-shop(efa7258a-da67-49ba-b51b-1966b633105f)
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs fraud-detection-65868bcdb5-94h4r -n astronomy-shop -c fraud-detection")
+```
+===== Output Message from docker ====
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/app/opentelemetry-javaagent.jar
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[otel.javaagent 2025-08-31 04:07:45:431 +0000] [main] INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent - version: 2.13.3
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+submit(["flagd", "fraud-detection"])
+```

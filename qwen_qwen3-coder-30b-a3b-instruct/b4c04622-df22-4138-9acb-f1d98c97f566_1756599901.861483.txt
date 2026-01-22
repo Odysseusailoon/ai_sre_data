@@ -1,0 +1,1166 @@
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-social-network")
+```
+===== Output Message from docker ====
+NAME                                      READY   STATUS    RESTARTS   AGE
+compose-post-service-7b495f794-45268      1/1     Running   0          67s
+home-timeline-redis-7f7686d8f5-mt6w2      1/1     Running   0          67s
+home-timeline-service-6bf55fbcd8-s2d86    1/1     Running   0          66s
+jaeger-7cb68977df-rg8wx                   1/1     Running   0          67s
+media-frontend-7ccdcc5874-bds2c           1/1     Running   0          67s
+media-memcached-6f888776fd-d4fj5          1/1     Running   0          67s
+media-mongodb-66c679cd9-tfhct             1/1     Running   0          67s
+media-service-8486767bd-lx4mh             1/1     Running   0          65s
+nginx-thrift-7fbb6d9b65-fnd94             1/1     Running   0          66s
+post-storage-memcached-6dcc4b4c66-dfxbf   1/1     Running   0          66s
+post-storage-mongodb-6db994db57-qkr6g     1/1     Running   0          65s
+post-storage-service-5f4d46cbb9-wp2xr     1/1     Running   0          65s
+social-graph-mongodb-8485c8fc7-8szt8      1/1     Running   0          65s
+social-graph-redis-66688cfbd8-qrwrt       1/1     Running   0          67s
+social-graph-service-65b8ddbdbc-hs7hz     1/1     Running   0          67s
+text-service-774b6cf48f-vvr5l             1/1     Running   0          67s
+unique-id-service-fc74bdf74-vk8jn         1/1     Running   0          67s
+url-shorten-memcached-566bf679b4-6rz9f    1/1     Running   0          66s
+url-shorten-mongodb-5466bc77c8-gsbq2      1/1     Running   0          67s
+url-shorten-service-598df5754-pxsfv       1/1     Running   0          64s
+user-memcached-849988fd5b-tzsjt           1/1     Running   0          65s
+user-mention-service-59cf6d5b8f-rpd2f     1/1     Running   0          67s
+user-mongodb-5cf7c6cd7b-p5z6p             1/1     Running   0          66s
+user-service-5cf866746f-hxjpj             1/1     Running   0          64s
+user-timeline-mongodb-c895ffcc8-mnxzn     1/1     Running   0          64s
+user-timeline-redis-84dc9b4599-q4l7f      1/1     Running   0          64s
+user-timeline-service-647bd67bfb-k8qmx    1/1     Running   0          67s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get services -n test-social-network")
+```
+===== Output Message from docker ====
+NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                                                            AGE
+compose-post-service     ClusterIP   10.96.104.139   <none>        9090/TCP                                                           75s
+home-timeline-redis      ClusterIP   10.96.222.54    <none>        6379/TCP                                                           75s
+home-timeline-service    ClusterIP   10.96.34.0      <none>        9090/TCP                                                           75s
+jaeger                   ClusterIP   10.96.163.197   <none>        5775/UDP,6831/UDP,6832/UDP,5778/TCP,16686/TCP,14268/TCP,9411/TCP   75s
+media-frontend           ClusterIP   10.96.75.245    <none>        8081/TCP                                                           75s
+media-memcached          ClusterIP   10.96.63.0      <none>        11211/TCP                                                          75s
+media-mongodb            ClusterIP   10.96.126.148   <none>        27017/TCP                                                          75s
+media-service            ClusterIP   10.96.248.208   <none>        9090/TCP                                                           75s
+nginx-thrift             ClusterIP   10.96.77.23     <none>        8080/TCP                                                           75s
+post-storage-memcached   ClusterIP   10.96.232.68    <none>        11211/TCP                                                          75s
+post-storage-mongodb     ClusterIP   10.96.221.255   <none>        27017/TCP                                                          75s
+post-storage-service     ClusterIP   10.96.117.60    <none>        9090/TCP                                                           75s
+social-graph-mongodb     ClusterIP   10.96.223.118   <none>        27017/TCP                                                          75s
+social-graph-redis       ClusterIP   10.96.255.175   <none>        6379/TCP                                                           75s
+social-graph-service     ClusterIP   10.96.193.221   <none>        9090/TCP                                                           75s
+text-service             ClusterIP   10.96.130.220   <none>        9090/TCP                                                           75s
+unique-id-service        ClusterIP   10.96.244.108   <none>        9090/TCP                                                           75s
+url-shorten-memcached    ClusterIP   10.96.110.233   <none>        11211/TCP                                                          75s
+url-shorten-mongodb      ClusterIP   10.96.32.227    <none>        27017/TCP                                                          75s
+url-shorten-service      ClusterIP   10.96.191.225   <none>        9090/TCP                                                           75s
+user-memcached           ClusterIP   10.96.189.40    <none>        11211/TCP                                                          75s
+user-mention-service     ClusterIP   10.96.169.239   <none>        9090/TCP                                                           75s
+user-mongodb             ClusterIP   10.96.71.59     <none>        27017/TCP                                                          75s
+user-service             ClusterIP   10.96.202.26    <none>        9090/TCP                                                           75s
+user-timeline-mongodb    ClusterIP   10.96.22.252    <none>        27017/TCP                                                          75s
+user-timeline-redis      ClusterIP   10.96.221.83    <none>        6379/TCP                                                           75s
+user-timeline-service    ClusterIP   10.96.155.99    <none>        9090/TCP                                                           75s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl top pods -n test-social-network")
+```
+[ERROR] Docker command execution failed: error: Metrics API not available
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get deployments -n test-social-network -o wide")
+```
+===== Output Message from docker ====
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS               IMAGES                                                         SELECTOR
+compose-post-service     1/1     1            1           78s   compose-post-service     docker.io/deathstarbench/social-network-microservices:latest   service=compose-post-service
+home-timeline-redis      1/1     1            1           78s   home-timeline-redis      docker.io/library/redis:6.2.4                                  service=home-timeline-redis
+home-timeline-service    1/1     1            1           78s   home-timeline-service    docker.io/deathstarbench/social-network-microservices:latest   service=home-timeline-service
+jaeger                   1/1     1            1           78s   jaeger                   docker.io/jaegertracing/all-in-one:1.57                        service=jaeger
+media-frontend           1/1     1            1           78s   media-frontend           docker.io/yg397/media-frontend:xenial                          service=media-frontend
+media-memcached          1/1     1            1           78s   media-memcached          docker.io/library/memcached:1.6.7                              service=media-memcached
+media-mongodb            1/1     1            1           78s   media-mongodb            docker.io/library/mongo:4.4.6                                  service=media-mongodb
+media-service            1/1     1            1           78s   media-service            docker.io/deathstarbench/social-network-microservices:latest   service=media-service
+nginx-thrift             1/1     1            1           78s   nginx-thrift             docker.io/yg397/openresty-thrift:xenial                        service=nginx-thrift
+post-storage-memcached   1/1     1            1           78s   post-storage-memcached   docker.io/library/memcached:1.6.7                              service=post-storage-memcached
+post-storage-mongodb     1/1     1            1           78s   post-storage-mongodb     docker.io/library/mongo:4.4.6                                  service=post-storage-mongodb
+post-storage-service     1/1     1            1           78s   post-storage-service     docker.io/deathstarbench/social-network-microservices:latest   service=post-storage-service
+social-graph-mongodb     1/1     1            1           78s   social-graph-mongodb     docker.io/library/mongo:4.4.6                                  service=social-graph-mongodb
+social-graph-redis       1/1     1            1           78s   social-graph-redis       docker.io/library/redis:6.2.4                                  service=social-graph-redis
+social-graph-service     1/1     1            1           78s   social-graph-service     docker.io/deathstarbench/social-network-microservices:latest   service=social-graph-service
+text-service             1/1     1            1           78s   text-service             docker.io/deathstarbench/social-network-microservices:latest   service=text-service
+unique-id-service        1/1     1            1           78s   unique-id-service        docker.io/deathstarbench/social-network-microservices:latest   service=unique-id-service
+url-shorten-memcached    1/1     1            1           78s   url-shorten-memcached    docker.io/library/memcached:1.6.7                              service=url-shorten-memcached
+url-shorten-mongodb      1/1     1            1           78s   url-shorten-mongodb      docker.io/library/mongo:4.4.6                                  service=url-shorten-mongodb
+url-shorten-service      1/1     1            1           78s   url-shorten-service      docker.io/deathstarbench/social-network-microservices:latest   service=url-shorten-service
+user-memcached           1/1     1            1           78s   user-memcached           docker.io/library/memcached:1.6.7                              service=user-memcached
+user-mention-service     1/1     1            1           78s   user-mention-service     docker.io/deathstarbench/social-network-microservices:latest   service=user-mention-service
+user-mongodb             1/1     1            1           78s   user-mongodb             docker.io/library/mongo:4.4.6                                  service=user-mongodb
+user-service             1/1     1            1           78s   user-service             docker.io/deathstarbench/social-network-microservices:latest   service=user-service
+user-timeline-mongodb    1/1     1            1           78s   user-timeline-mongodb    docker.io/library/mongo:4.4.6                                  service=user-timeline-mongodb
+user-timeline-redis      1/1     1            1           78s   user-timeline-redis      docker.io/library/redis:6.2.4                                  service=user-timeline-redis
+user-timeline-service    1/1     1            1           78s   user-timeline-service    docker.io/deathstarbench/social-network-microservices:latest   service=user-timeline-service
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs -n test-social-network deploy/compose-post-service")
+```
+===== Output Message from docker ====
+[2025-Aug-31 00:24:08.911032] <info>: (ComposePostService.cpp:110:main) Starting the compose-post-service server ...
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.054874] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.099645] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.144850] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.162380] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.204133] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.422515] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.474541] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.488602] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.606696] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.730983] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.753973] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.823118] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.955459] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.956357] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.964921] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.973748] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.041837] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.055681] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.155748] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.431569] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.715067] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.979883] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.023260] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.112695] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.295179] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.393714] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.703496] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.705786] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.837678] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.970077] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.005102] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.007733] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.103528] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.193600] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.251308] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.323829] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.327313] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.392557] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.444240] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.572332] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.574157] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.624016] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.646418] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.757198] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.901003] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.942152] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.958657] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.965211] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.975461] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.104899] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.492067] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.595331] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.677420] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.700144] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.821265] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.911107] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.371712] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.526870] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.694019] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.980263] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.985503] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.006005] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.038633] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.080474] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.203561] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.303797] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.357712] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.399158] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.479739] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.491325] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.606858] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.771765] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.785142] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.799418] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.865025] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.117596] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.139464] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.177947] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.228212] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.304069] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.384703] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.549722] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.574278] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.612551] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.661808] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.834646] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.856256] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.956950] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.031586] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.040986] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.065781] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.147671] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.150210] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.177868] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.193118] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.315009] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.355438] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.377397] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.395980] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.430990] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.541573] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.551887] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.568288] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.738054] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.762321] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.852093] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.951193] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.023497] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.047152] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.094881] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.274833] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.331267] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.435090] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.628676] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.770337] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.886446] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.887171] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs -n test-social-network deploy/post-storage-service")
+```
+===== Output Message from docker ====
+[2025-Aug-31 00:24:28.638123] <error>: (utils_mongodb.h:76:CreateIndex) Error in createIndexes: No suitable servers found: `serverSelectionTimeoutMS` expired: [unknown connection error calling ismaster on 'post-storage-mongodb:27017']
+[2025-Aug-31 00:24:28.638284] <error>: (PostStorageService.cpp:67:main) Failed to create mongodb index, try again
+[2025-Aug-31 00:24:29.937082] <error>: (utils_mongodb.h:76:CreateIndex) Error in createIndexes: No suitable servers found: `serverSelectionTimeoutMS` expired: [unknown connection error calling ismaster on 'post-storage-mongodb:27017']
+[2025-Aug-31 00:24:29.937145] <error>: (PostStorageService.cpp:67:main) Failed to create mongodb index, try again
+[2025-Aug-31 00:24:31.236084] <error>: (utils_mongodb.h:76:CreateIndex) Error in createIndexes: No suitable servers found: `serverSelectionTimeoutMS` expired: [unknown connection error calling ismaster on 'post-storage-mongodb:27017']
+[2025-Aug-31 00:24:31.236137] <error>: (PostStorageService.cpp:67:main) Failed to create mongodb index, try again
+[2025-Aug-31 00:24:32.535085] <error>: (utils_mongodb.h:76:CreateIndex) Error in createIndexes: No suitable servers found: `serverSelectionTimeoutMS` expired: [connection refused calling ismaster on 'post-storage-mongodb:27017']
+[2025-Aug-31 00:24:32.535147] <error>: (PostStorageService.cpp:67:main) Failed to create mongodb index, try again
+[2025-Aug-31 00:24:33.560715] <info>: (PostStorageService.cpp:81:main) Starting the post-storage-service server...
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs -n test-social-network deploy/post-storage-mongodb")
+```
+===== Output Message from docker ====
+{"t":{"$date":"2025-08-31T00:24:31.715+00:00"},"s":"I",  "c":"CONTROL",  "id":23285,   "ctx":"main","msg":"Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+{"t":{"$date":"2025-08-31T00:24:31.716+00:00"},"s":"W",  "c":"ASIO",     "id":22601,   "ctx":"main","msg":"No TransportLayer configured during NetworkInterface startup"}
+{"t":{"$date":"2025-08-31T00:24:31.716+00:00"},"s":"I",  "c":"NETWORK",  "id":4648601, "ctx":"main","msg":"Implicit TCP FastOpen unavailable. If TCP FastOpen is required, set tcpFastOpenServer, tcpFastOpenClient, and tcpFastOpenQueueSize."}
+{"t":{"$date":"2025-08-31T00:24:31.716+00:00"},"s":"I",  "c":"STORAGE",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":1,"port":27017,"dbPath":"/data/db","architecture":"64-bit","host":"post-storage-mongodb"}}
+{"t":{"$date":"2025-08-31T00:24:31.716+00:00"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"4.4.6","gitVersion":"72e66213c2c3eab37d9358d5e78ad7f5c1d0d0d7","openSSLVersion":"OpenSSL 1.1.1  11 Sep 2018","modules":[],"allocator":"tcmalloc","environment":{"distmod":"ubuntu1804","distarch":"x86_64","target_arch":"x86_64"}}}}
+{"t":{"$date":"2025-08-31T00:24:31.716+00:00"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Ubuntu","version":"18.04"}}}
+{"t":{"$date":"2025-08-31T00:24:31.716+00:00"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{"config":"/social-network-microservices/config/mongod.conf","net":{"bindIp":"*","tls":{"mode":"disabled"}}}}}
+{"t":{"$date":"2025-08-31T00:24:31.717+00:00"},"s":"I",  "c":"STORAGE",  "id":22297,   "ctx":"initandlisten","msg":"Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem","tags":["startupWarnings"]}
+{"t":{"$date":"2025-08-31T00:24:31.717+00:00"},"s":"I",  "c":"STORAGE",  "id":22315,   "ctx":"initandlisten","msg":"Opening WiredTiger","attr":{"config":"create,cache_size=15180M,session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000,close_scan_interval=10,close_handle_minimum=250),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress,compact_progress],"}}
+{"t":{"$date":"2025-08-31T00:24:32.211+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1756599872:211302][1:0x79880a490ac0], txn-recover: [WT_VERB_RECOVERY | WT_VERB_RECOVERY_PROGRESS] Set global recovery timestamp: (0, 0)"}}
+{"t":{"$date":"2025-08-31T00:24:32.211+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1756599872:211349][1:0x79880a490ac0], txn-recover: [WT_VERB_RECOVERY | WT_VERB_RECOVERY_PROGRESS] Set global oldest timestamp: (0, 0)"}}
+{"t":{"$date":"2025-08-31T00:24:32.222+00:00"},"s":"I",  "c":"STORAGE",  "id":4795906, "ctx":"initandlisten","msg":"WiredTiger opened","attr":{"durationMillis":505}}
+{"t":{"$date":"2025-08-31T00:24:32.222+00:00"},"s":"I",  "c":"RECOVERY", "id":23987,   "ctx":"initandlisten","msg":"WiredTiger recoveryTimestamp","attr":{"recoveryTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+{"t":{"$date":"2025-08-31T00:24:32.241+00:00"},"s":"I",  "c":"STORAGE",  "id":4366408, "ctx":"initandlisten","msg":"No table logging settings modifications are required for existing WiredTiger tables","attr":{"loggingEnabled":true}}
+{"t":{"$date":"2025-08-31T00:24:32.242+00:00"},"s":"I",  "c":"STORAGE",  "id":22262,   "ctx":"initandlisten","msg":"Timestamp monitor starting"}
+{"t":{"$date":"2025-08-31T00:24:32.252+00:00"},"s":"W",  "c":"CONTROL",  "id":22120,   "ctx":"initandlisten","msg":"Access control is not enabled for the database. Read and write access to data and configuration is unrestricted","tags":["startupWarnings"]}
+{"t":{"$date":"2025-08-31T00:24:32.252+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"initandlisten","msg":"createCollection","attr":{"namespace":"admin.system.version","uuidDisposition":"provided","uuid":{"uuid":{"$uuid":"faf4e033-372b-4d31-9774-92debe7e0f8f"}},"options":{"uuid":{"$uuid":"faf4e033-372b-4d31-9774-92debe7e0f8f"}}}}
+{"t":{"$date":"2025-08-31T00:24:32.268+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"initandlisten","msg":"Index build: done building","attr":{"buildUUID":null,"namespace":"admin.system.version","index":"_id_","commitTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+{"t":{"$date":"2025-08-31T00:24:32.268+00:00"},"s":"I",  "c":"COMMAND",  "id":20459,   "ctx":"initandlisten","msg":"Setting featureCompatibilityVersion","attr":{"newVersion":"4.4"}}
+{"t":{"$date":"2025-08-31T00:24:32.268+00:00"},"s":"I",  "c":"STORAGE",  "id":20536,   "ctx":"initandlisten","msg":"Flow Control is enabled on this deployment"}
+{"t":{"$date":"2025-08-31T00:24:32.269+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"initandlisten","msg":"createCollection","attr":{"namespace":"local.startup_log","uuidDisposition":"generated","uuid":{"uuid":{"$uuid":"7954358b-ce37-4ad1-a144-40feb56a9f8f"}},"options":{"capped":true,"size":10485760}}}
+{"t":{"$date":"2025-08-31T00:24:32.285+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"initandlisten","msg":"Index build: done building","attr":{"buildUUID":null,"namespace":"local.startup_log","index":"_id_","commitTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+{"t":{"$date":"2025-08-31T00:24:32.285+00:00"},"s":"I",  "c":"FTDC",     "id":20625,   "ctx":"initandlisten","msg":"Initializing full-time diagnostic data capture","attr":{"dataDirectory":"/data/db/diagnostic.data"}}
+{"t":{"$date":"2025-08-31T00:24:32.287+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"LogicalSessionCacheRefresh","msg":"createCollection","attr":{"namespace":"config.system.sessions","uuidDisposition":"generated","uuid":{"uuid":{"$uuid":"934d0462-36e8-4c93-8c2c-31e4db1d216a"}},"options":{}}}
+{"t":{"$date":"2025-08-31T00:24:32.287+00:00"},"s":"I",  "c":"CONTROL",  "id":20712,   "ctx":"LogicalSessionCacheReap","msg":"Sessions collection is not set up; waiting until next sessions reap interval","attr":{"error":"NamespaceNotFound: config.system.sessions does not exist"}}
+{"t":{"$date":"2025-08-31T00:24:32.287+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"/tmp/mongodb-27017.sock"}}
+{"t":{"$date":"2025-08-31T00:24:32.287+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"0.0.0.0"}}
+{"t":{"$date":"2025-08-31T00:24:32.287+00:00"},"s":"I",  "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections","attr":{"port":27017,"ssl":"off"}}
+{"t":{"$date":"2025-08-31T00:24:32.312+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"LogicalSessionCacheRefresh","msg":"Index build: done building","attr":{"buildUUID":null,"namespace":"config.system.sessions","index":"_id_","commitTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+{"t":{"$date":"2025-08-31T00:24:32.312+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"LogicalSessionCacheRefresh","msg":"Index build: done building","attr":{"buildUUID":null,"namespace":"config.system.sessions","index":"lsidTTLIndex","commitTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+{"t":{"$date":"2025-08-31T00:24:32.737+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"10.244.1.68:38258","connectionId":1,"connectionCount":1}}
+{"t":{"$date":"2025-08-31T00:24:32.737+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn1","msg":"client metadata","attr":{"remote":"10.244.1.68:38258","client":"conn1","doc":{"application":{"name":"post-storage-service"},"driver":{"name":"mongoc","version":"1.15.0"},"os":{"type":"Linux","name":"Ubuntu","version":"16.04","architecture":"x86_64"},"platform":"cfg=0x215680e9 posix=200809 stdc=201112 CC=GCC 5.4.0 20160609 CFLAGS=\"\" LDFLAGS=\"\""}}}
+{"t":{"$date":"2025-08-31T00:24:33.535+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"10.244.1.68:38260","connectionId":2,"connectionCount":2}}
+{"t":{"$date":"2025-08-31T00:24:33.536+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn2","msg":"client metadata","attr":{"remote":"10.244.1.68:38260","client":"conn2","doc":{"application":{"name":"post-storage-service"},"driver":{"name":"mongoc","version":"1.15.0"},"os":{"type":"Linux","name":"Ubuntu","version":"16.04","architecture":"x86_64"},"platform":"cfg=0x215680e9 posix=200809 stdc=201112 CC=GCC 5.4.0 20160609 CFLAGS=\"\" LDFLAGS=\"\""}}}
+{"t":{"$date":"2025-08-31T00:24:33.536+00:00"},"s":"I",  "c":"STORAGE",  "id":20320,   "ctx":"conn2","msg":"createCollection","attr":{"namespace":"post.post","uuidDisposition":"generated","uuid":{"uuid":{"$uuid":"f3d4f7d3-3d73-42fd-8e1c-4fd4bbe4f016"}},"options":{}}}
+{"t":{"$date":"2025-08-31T00:24:33.560+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"conn2","msg":"Index build: done building","attr":{"buildUUID":null,"namespace":"post.post","index":"_id_","commitTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+{"t":{"$date":"2025-08-31T00:24:33.560+00:00"},"s":"I",  "c":"INDEX",    "id":20345,   "ctx":"conn2","msg":"Index build: done building","attr":{"buildUUID":null,"namespace":"post.post","index":"post_id_1","commitTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get svc post-storage-mongodb -n test-social-network")
+```
+===== Output Message from docker ====
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+post-storage-mongodb   ClusterIP   10.96.221.255   <none>        27017/TCP   85s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod -n test-social-network deploy/post-storage-service")
+```
+[ERROR] Docker command execution failed: error: there is no need to specify a resource type as a separate argument when passing arguments in resource/name form (e.g. 'kubectl get resource/<resource_name>' instead of 'kubectl get resource resource/<resource_name>'
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod -n test-social-network $(kubectl get pods -n test-social-network -l service=post-storage-service -o name)")
+```
+[ERROR] Docker command execution failed: error: there is no need to specify a resource type as a separate argument when passing arguments in resource/name form (e.g. 'kubectl get resource/<resource_name>' instead of 'kubectl get resource resource/<resource_name>'
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-social-network -l service=post-storage-service")
+```
+===== Output Message from docker ====
+NAME                                    READY   STATUS    RESTARTS   AGE
+post-storage-service-5f4d46cbb9-wp2xr   1/1     Running   0          99s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod -n test-social-network post-storage-service-5f4d46cbb9-wp2xr")
+```
+===== Output Message from docker ====
+Name:             post-storage-service-5f4d46cbb9-wp2xr
+Namespace:        test-social-network
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 00:23:57 +0000
+Labels:           app=post-storage-service
+                  pod-template-hash=5f4d46cbb9
+                  service=post-storage-service
+Annotations:      <none>
+Status:           Running
+IP:               10.244.1.68
+IPs:
+  IP:           10.244.1.68
+Controlled By:  ReplicaSet/post-storage-service-5f4d46cbb9
+Containers:
+  post-storage-service:
+    Container ID:  containerd://2b8b8921456345c00833dcd9b20e9e0233de2adef4c526250567331faad96339
+    Image:         docker.io/deathstarbench/social-network-microservices:latest
+    Image ID:      docker.io/deathstarbench/social-network-microservices@sha256:a845266e98ce15d204ee7b98d41a2a95820af525013ce70f14104f5b9b5e92b6
+    Port:          9090/TCP
+    Host Port:     0/TCP
+    Command:
+      PostStorageService
+    State:          Running
+      Started:      Sun, 31 Aug 2025 00:24:28 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /social-network-microservices/config/jaeger-config.yml from post-storage-service-config (rw,path="jaeger-config.yml")
+      /social-network-microservices/config/service-config.json from post-storage-service-config (rw,path="service-config.json")
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cjsgv (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  post-storage-service-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      post-storage-service
+    Optional:  false
+  kube-api-access-cjsgv:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  101s  default-scheduler  Successfully assigned test-social-network/post-storage-service-5f4d46cbb9-wp2xr to niko-0830-worker
+  Normal  Pulling    101s  kubelet            Pulling image "docker.io/deathstarbench/social-network-microservices:latest"
+  Normal  Pulled     70s   kubelet            Successfully pulled image "docker.io/deathstarbench/social-network-microservices:latest" in 1.61s (30.481s including waiting). Image size: 94999339 bytes.
+  Normal  Created    70s   kubelet            Created container: post-storage-service
+  Normal  Started    70s   kubelet            Started container post-storage-service
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get endpoints post-storage-mongodb -n test-social-network")
+```
+===== Output Message from docker ====
+NAME                   ENDPOINTS           AGE
+post-storage-mongodb   10.244.1.70:27017   104s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-social-network -l service=post-storage-mongodb")
+```
+===== Output Message from docker ====
+NAME                                    READY   STATUS    RESTARTS   AGE
+post-storage-mongodb-6db994db57-qkr6g   1/1     Running   0          104s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod -n test-social-network post-storage-mongodb-6db994db57-qkr6g")
+```
+===== Output Message from docker ====
+Name:             post-storage-mongodb-6db994db57-qkr6g
+Namespace:        test-social-network
+Priority:         0
+Service Account:  default
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 00:23:57 +0000
+Labels:           app=post-storage-mongodb
+                  pod-template-hash=6db994db57
+                  service=post-storage-mongodb
+Annotations:      <none>
+Status:           Running
+IP:               10.244.1.70
+IPs:
+  IP:           10.244.1.70
+Controlled By:  ReplicaSet/post-storage-mongodb-6db994db57
+Containers:
+  post-storage-mongodb:
+    Container ID:  containerd://7f6d8e46284c8602891d4920858e621888ed6c13e41c3ff73c3ad72ac7df4678
+    Image:         docker.io/library/mongo:4.4.6
+    Image ID:      docker.io/library/mongo@sha256:6efa052039903e731e4a5550c68a13c4869ddc93742c716332883fd9c77eb79b
+    Port:          27017/TCP
+    Host Port:     0/TCP
+    Args:
+      --config
+      /social-network-microservices/config/mongod.conf
+    State:          Running
+      Started:      Sun, 31 Aug 2025 00:24:31 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /social-network-microservices/config/mongod.conf from post-storage-mongodb-config (rw,path="mongod.conf")
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cnjvc (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  post-storage-mongodb-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      post-storage-mongodb
+    Optional:  false
+  kube-api-access-cnjvc:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  106s  default-scheduler  Successfully assigned test-social-network/post-storage-mongodb-6db994db57-qkr6g to niko-0830-worker
+  Normal  Pulling    105s  kubelet            Pulling image "docker.io/library/mongo:4.4.6"
+  Normal  Pulled     72s   kubelet            Successfully pulled image "docker.io/library/mongo:4.4.6" in 1.661s (33.366s including waiting). Image size: 167655616 bytes.
+  Normal  Created    72s   kubelet            Created container: post-storage-mongodb
+  Normal  Started    72s   kubelet            Started container post-storage-mongodb
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl exec -it -n test-social-network post-storage-service-5f4d46cbb9-wp2xr -- ping post-storage-mongodb")
+```
+[ERROR] Docker command execution failed: Unable to use a TTY - input is not a terminal or the right kind of file
+error: Internal error occurred: Internal error occurred: error executing command in container: failed to exec in container: failed to start exec "cf52aa0d85cbe6200f6c2888a574023ca07103f371979d9aaf788c2cd6d5a534": OCI runtime exec failed: exec failed: unable to start container process: exec: "ping": executable file not found in $PATH: unknown
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl exec -it -n test-social-network post-storage-service-5f4d46cbb9-wp2xr -- nslookup post-storage-mongodb")
+```
+[ERROR] Docker command execution failed: Unable to use a TTY - input is not a terminal or the right kind of file
+error: Internal error occurred: Internal error occurred: error executing command in container: failed to exec in container: failed to start exec "4e7e28bd8d3ea0ae1dc2feb56b786fc87a24a0487298df57b85f3df0eccb37a6": OCI runtime exec failed: exec failed: unable to start container process: exec: "nslookup": executable file not found in $PATH: unknown
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl exec -it -n test-social-network post-storage-service-5f4d46cbb9-wp2xr -- cat /etc/resolv.conf")
+```
+[ERROR] Docker command execution failed: Unable to use a TTY - input is not a terminal or the right kind of file
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl exec -n test-social-network post-storage-service-5f4d46cbb9-wp2xr -- cat /etc/resolv.conf")
+```
+===== Output Message from docker ====
+search test-social-network.svc.cluster.local svc.cluster.local cluster.local ap-southeast-1.compute.internal
+nameserver 10.96.0.10
+options ndots:5
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get configmap post-storage-service-config -n test-social-network -o yaml")
+```
+[ERROR] Docker command execution failed: Error from server (NotFound): configmaps "post-storage-service-config" not found
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get configmap -n test-social-network | grep post-storage")
+```
+===== Output Message from docker ====
+post-storage-memcached   2      2m9s
+post-storage-mongodb     1      2m9s
+post-storage-service     2      2m9s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get configmap post-storage-service -n test-social-network -o yaml")
+```
+===== Output Message from docker ====
+apiVersion: v1
+data:
+  jaeger-config.yml: |
+    disabled: false
+    reporter:
+      logSpans: false
+      localAgentHostPort: "jaeger:6831"
+      queueSize: 1000000
+      bufferFlushInterval: 10
+    sampler:
+      type: "probabilistic"
+      param: 0.01
+  service-config.json: |
+    {
+        "secret": "secret",
+        "social-graph-service": {
+          "addr": "social-graph-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "social-graph-mongodb": {
+          "addr": "social-graph-mongodb",
+          "port": 27017,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "social-graph-redis": {
+          "addr": "social-graph-redis",
+          "port": 6379,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "use_cluster": 0,
+          "use_replica": 0
+        },
+        "write-home-timeline-service": {
+          "addr": "write-home-timeline-service",
+          "port": 9090,
+          "workers": 32,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "write-home-timeline-rabbitmq": {
+          "addr": "write-home-timeline-rabbitmq",
+          "port": 5672,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "home-timeline-redis": {
+          "addr": "home-timeline-redis",
+          "port": 6379,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "use_cluster": 0,
+          "use_replica": 0
+        },
+        "compose-post-service": {
+          "addr": "compose-post-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "compose-post-redis": {
+          "addr": "compose-post-redis",
+          "port": 6379,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "use_cluster": 0,
+          "use_replica": 0
+        },
+        "user-timeline-service": {
+          "addr": "user-timeline-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "user-timeline-mongodb": {
+          "addr": "user-timeline-mongodb",
+          "port": 27017,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "user-timeline-redis": {
+          "addr": "user-timeline-redis",
+          "port": 6379,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "use_cluster": 0,
+          "use_replica": 0
+        },
+        "post-storage-service": {
+          "addr": "post-storage-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "post-storage-mongodb": {
+          "addr": "post-storage-mongodb",
+          "port": 27017,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "post-storage-memcached": {
+          "addr": "post-storage-memcached",
+          "port": 11211,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "binary_protocol": 1
+        },
+        "unique-id-service": {
+          "addr": "unique-id-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "netif": "eth0"
+        },
+        "media-service": {
+          "addr": "media-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "media-mongodb": {
+          "addr": "media-mongodb",
+          "port": 27017,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "media-memcached": {
+          "addr": "media-memcached",
+          "port": 11211,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "binary_protocol": 1
+        },
+        "media-frontend": {
+          "addr": "media-frontend",
+          "port": 8081,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "text-service": {
+          "addr": "text-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "user-mention-service": {
+          "addr": "user-mention-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "url-shorten-service": {
+          "addr": "url-shorten-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "url-shorten-memcached": {
+          "addr": "url-shorten-memcached",
+          "port": 11211,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "binary_protocol": 1
+        },
+        "url-shorten-mongodb": {
+          "addr": "url-shorten-mongodb",
+          "port": 27017,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "user-service": {
+          "addr": "user-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "netif": "eth0"
+        },
+        "user-memcached": {
+          "addr": "user-memcached",
+          "port": 11211,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000,
+          "binary_protocol": 1
+        },
+        "user-mongodb": {
+          "addr": "user-mongodb",
+          "port": 27017,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "home-timeline-service": {
+          "addr": "home-timeline-service",
+          "port": 9090,
+          "connections": 512,
+          "timeout_ms": 10000,
+          "keepalive_ms": 10000
+        },
+        "ssl": {
+          "enabled": false,
+          "caPath": "/keys/CA.pem",
+          "ciphers": "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH",
+          "serverKeyPath": "/keys/server.key",
+          "serverCertPath": "/keys/server.crt"
+        },
+        "redis-primary": {
+          "keepalive_ms": 10000,
+          "addr": "redis-master",
+          "timeout_ms": 10000,
+          "port": 6379,
+          "connections": 512
+        },
+        "redis-replica": {
+          "keepalive_ms": 10000,
+          "addr": "redis-replicas",
+          "timeout_ms": 10000,
+          "port": 6379,
+          "connections": 512
+        }
+      }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: social-network
+    meta.helm.sh/release-namespace: test-social-network
+  creationTimestamp: "2025-08-31T00:23:55Z"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    socialnetwork/service: post-storage-service
+  name: post-storage-service
+  namespace: test-social-network
+  resourceVersion: "82075"
+  uid: 94dc2142-1269-446b-8230-021502e20bc7
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get svc -n test-social-network | grep post-storage")
+```
+===== Output Message from docker ====
+post-storage-memcached   ClusterIP   10.96.232.68    <none>        11211/TCP                                                          2m12s
+post-storage-mongodb     ClusterIP   10.96.221.255   <none>        27017/TCP                                                          2m12s
+post-storage-service     ClusterIP   10.96.117.60    <none>        9090/TCP                                                           2m12s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-social-network -o wide | grep post-storage")
+```
+===== Output Message from docker ====
+post-storage-memcached-6dcc4b4c66-dfxbf   1/1     Running   0          2m13s   10.244.1.65   niko-0830-worker   <none>           <none>
+post-storage-mongodb-6db994db57-qkr6g     1/1     Running   0          2m12s   10.244.1.70   niko-0830-worker   <none>           <none>
+post-storage-service-5f4d46cbb9-wp2xr     1/1     Running   0          2m12s   10.244.1.68   niko-0830-worker   <none>           <none>
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl delete pod -n test-social-network post-storage-service-5f4d46cbb9-wp2xr")
+```
+===== Output Message from docker ====
+pod "post-storage-service-5f4d46cbb9-wp2xr" deleted
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-social-network -l service=post-storage-service")
+```
+===== Output Message from docker ====
+NAME                                    READY   STATUS    RESTARTS   AGE
+post-storage-service-5f4d46cbb9-lrp6c   1/1     Running   0          32s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs -n test-social-network deploy/post-storage-service")
+```
+===== Output Message from docker ====
+[2025-Aug-31 00:26:13.854131] <info>: (PostStorageService.cpp:81:main) Starting the post-storage-service server...
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl logs -n test-social-network deploy/compose-post-service")
+```
+===== Output Message from docker ====
+[2025-Aug-31 00:24:08.911032] <info>: (ComposePostService.cpp:110:main) Starting the compose-post-service server ...
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.054874] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.099645] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.144850] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.162380] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.204133] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.422515] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.474541] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.488602] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.606696] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.730983] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.753973] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.823118] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.955459] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.956357] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.964921] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:24:59 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:24:59.973748] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.041837] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.055681] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.155748] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.431569] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.715067] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:00 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:00.979883] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.023260] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.112695] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.295179] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.393714] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.703496] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.705786] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.837678] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:01 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:01.970077] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.005102] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.007733] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.103528] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.193600] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.251308] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.323829] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.327313] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.392557] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.444240] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.572332] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.574157] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.624016] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.646418] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.757198] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.901003] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.942152] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.958657] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.965211] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:02 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:02.975461] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.104899] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.492067] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.595331] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.677420] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.700144] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.821265] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:03 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:03.911107] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.371712] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.526870] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.694019] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.980263] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:04 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:04.985503] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.006005] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.038633] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.080474] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.203561] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.303797] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.357712] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.399158] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.479739] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.491325] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.606858] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.771765] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.785142] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.799418] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:05 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:05.865025] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.117596] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.139464] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.177947] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.228212] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.304069] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.384703] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.549722] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.574278] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.612551] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.661808] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.834646] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.856256] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:06 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:06.956950] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.031586] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.040986] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.065781] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.147671] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.150210] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.177868] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.193118] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.315009] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.355438] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.377397] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.395980] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.430990] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.541573] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.551887] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.568288] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.738054] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.762321] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.852093] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:07 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:07.951193] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.023497] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.047152] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.094881] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.274833] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.331267] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.435090] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.628676] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.770337] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.886446] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+Thrift: Sun Aug 31 00:25:08 2025 TSocket::open() connect() <Host: post-storage-service Port: 9090>: Connection refused
+[2025-Aug-31 00:25:08.887171] <error>: (ClientPool.h:114:Pop) Failed to connect post-storage-client
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl delete pod -n test-social-network post-storage-mongodb-6db994db57-qkr6g")
+```
+===== Output Message from docker ====
+pod "post-storage-mongodb-6db994db57-qkr6g" deleted
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n test-social-network -l service=post-storage-mongodb")
+```
+===== Output Message from docker ====
+NAME                                    READY   STATUS              RESTARTS   AGE
+post-storage-mongodb-6db994db57-2bs2x   0/1     ContainerCreating   0          2s

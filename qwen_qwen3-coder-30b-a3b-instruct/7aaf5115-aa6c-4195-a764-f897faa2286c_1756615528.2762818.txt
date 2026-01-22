@@ -1,0 +1,466 @@
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get pods -n astronomy-shop")
+```
+===== Output Message from docker ====
+NAME                               READY   STATUS      RESTARTS      AGE
+accounting-567f87bbcd-kzxzv        1/1     Running     0             48s
+ad-94bd576b5-rzgxd                 1/1     Running     1 (39s ago)   47s
+cart-6fd857c656-2nw87              1/1     Running     0             48s
+checkout-5bc54f8cd8-8ftcs          1/1     Running     0             48s
+currency-5864f94d89-m9htt          1/1     Running     0             48s
+email-59d9ffc758-92vkn             1/1     Running     0             47s
+flagd-5568df8b9c-tfcgj             0/2     Init:0/1    0             0s
+flagd-86575d5796-c7lzq             2/2     Running     0             46s
+fraud-detection-65868bcdb5-8tz68   0/1     OOMKilled   2 (17s ago)   45s
+frontend-7d6b77c58-hg72q           1/1     Running     0             46s
+frontend-proxy-548b4649d7-5dw4t    1/1     Running     0             46s
+grafana-6b9fb84fb7-rl9cp           1/1     Running     0             47s
+image-provider-7f5bc6bf-65vfs      1/1     Running     0             46s
+jaeger-55f499595b-6mdgw            1/1     Running     0             48s
+kafka-6494b5cf67-jpdhg             1/1     Running     0             48s
+load-generator-68b6f899f5-lc55r    1/1     Running     0             48s
+opensearch-0                       1/1     Running     0             48s
+otel-collector-758b8784c-6rzq8     1/1     Running     0             48s
+payment-7597577cb5-2b25p           1/1     Running     0             45s
+product-catalog-6988cd5f49-8jdhh   1/1     Running     0             47s
+prometheus-58b7bfb774-h8j69        1/1     Running     0             45s
+quote-78bf8788-4q9b2               1/1     Running     0             48s
+recommendation-7b49c8cb75-jfttc    1/1     Running     0             47s
+shipping-7f445d59dc-mrnp7          1/1     Running     0             48s
+valkey-cart-6475dcc67f-zk8b7       1/1     Running     0             45s
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl get events -n astronomy-shop --sort-by=.metadata.creationTimestamp")
+```
+===== Output Message from docker ====
+LAST SEEN   TYPE      REASON              OBJECT                                  MESSAGE
+50s         Normal    Scheduled           pod/currency-5864f94d89-m9htt           Successfully assigned astronomy-shop/currency-5864f94d89-m9htt to niko-0830-worker
+50s         Normal    ScalingReplicaSet   deployment/shipping                     Scaled up replica set shipping-7f445d59dc from 0 to 1
+50s         Normal    Scheduled           pod/shipping-7f445d59dc-mrnp7           Successfully assigned astronomy-shop/shipping-7f445d59dc-mrnp7 to niko-0830-worker
+50s         Normal    ScalingReplicaSet   deployment/quote                        Scaled up replica set quote-78bf8788 from 0 to 1
+50s         Normal    SuccessfulCreate    replicaset/quote-78bf8788               Created pod: quote-78bf8788-4q9b2
+50s         Normal    Created             pod/quote-78bf8788-4q9b2                Created container: quote
+50s         Normal    Pulled              pod/quote-78bf8788-4q9b2                Container image "ghcr.io/open-telemetry/demo:2.0.2-quote" already present on machine
+50s         Normal    Scheduled           pod/quote-78bf8788-4q9b2                Successfully assigned astronomy-shop/quote-78bf8788-4q9b2 to niko-0830-worker
+50s         Normal    SuccessfulCreate    replicaset/accounting-567f87bbcd        Created pod: accounting-567f87bbcd-kzxzv
+50s         Normal    ScalingReplicaSet   deployment/accounting                   Scaled up replica set accounting-567f87bbcd from 0 to 1
+50s         Normal    Scheduled           pod/otel-collector-758b8784c-6rzq8      Successfully assigned astronomy-shop/otel-collector-758b8784c-6rzq8 to niko-0830-worker
+50s         Normal    SuccessfulCreate    statefulset/opensearch                  create Pod opensearch-0 in StatefulSet opensearch successful
+50s         Normal    NoPods              poddisruptionbudget/opensearch-pdb      No matching pods found
+50s         Normal    Created             pod/opensearch-0                        Created container: configfile
+50s         Normal    Pulled              pod/opensearch-0                        Container image "opensearchproject/opensearch:2.19.3" already present on machine
+50s         Normal    Scheduled           pod/opensearch-0                        Successfully assigned astronomy-shop/opensearch-0 to niko-0830-worker
+50s         Normal    Scheduled           pod/cart-6fd857c656-2nw87               Successfully assigned astronomy-shop/cart-6fd857c656-2nw87 to niko-0830-worker
+50s         Normal    ScalingReplicaSet   deployment/load-generator               Scaled up replica set load-generator-68b6f899f5 from 0 to 1
+50s         Normal    SuccessfulCreate    replicaset/load-generator-68b6f899f5    Created pod: load-generator-68b6f899f5-lc55r
+50s         Normal    Scheduled           pod/load-generator-68b6f899f5-lc55r     Successfully assigned astronomy-shop/load-generator-68b6f899f5-lc55r to niko-0830-worker
+50s         Normal    ScalingReplicaSet   deployment/kafka                        Scaled up replica set kafka-6494b5cf67 from 0 to 1
+50s         Normal    SuccessfulCreate    replicaset/kafka-6494b5cf67             Created pod: kafka-6494b5cf67-jpdhg
+50s         Normal    Scheduled           pod/kafka-6494b5cf67-jpdhg              Successfully assigned astronomy-shop/kafka-6494b5cf67-jpdhg to niko-0830-worker
+50s         Normal    ScalingReplicaSet   deployment/jaeger                       Scaled up replica set jaeger-55f499595b from 0 to 1
+50s         Normal    SuccessfulCreate    replicaset/cart-6fd857c656              Created pod: cart-6fd857c656-2nw87
+50s         Normal    ScalingReplicaSet   deployment/cart                         Scaled up replica set cart-6fd857c656 from 0 to 1
+50s         Normal    Scheduled           pod/checkout-5bc54f8cd8-8ftcs           Successfully assigned astronomy-shop/checkout-5bc54f8cd8-8ftcs to niko-0830-worker
+50s         Normal    SuccessfulCreate    replicaset/jaeger-55f499595b            Created pod: jaeger-55f499595b-6mdgw
+50s         Normal    Pulled              pod/jaeger-55f499595b-6mdgw             Container image "jaegertracing/all-in-one:1.53.0" already present on machine
+50s         Normal    Scheduled           pod/jaeger-55f499595b-6mdgw             Successfully assigned astronomy-shop/jaeger-55f499595b-6mdgw to niko-0830-worker
+50s         Normal    Scheduled           pod/accounting-567f87bbcd-kzxzv         Successfully assigned astronomy-shop/accounting-567f87bbcd-kzxzv to niko-0830-worker
+50s         Normal    ScalingReplicaSet   deployment/currency                     Scaled up replica set currency-5864f94d89 from 0 to 1
+50s         Normal    SuccessfulCreate    replicaset/currency-5864f94d89          Created pod: currency-5864f94d89-m9htt
+49s         Normal    Pulled              pod/grafana-6b9fb84fb7-rl9cp            Container image "docker.io/grafana/grafana:12.1.0" already present on machine
+49s         Normal    Scheduled           pod/product-catalog-6988cd5f49-8jdhh    Successfully assigned astronomy-shop/product-catalog-6988cd5f49-8jdhh to niko-0830-worker
+50s         Normal    ScalingReplicaSet   deployment/checkout                     Scaled up replica set checkout-5bc54f8cd8 from 0 to 1
+49s         Normal    Created             pod/opensearch-0                        Created container: opensearch
+49s         Normal    Pulled              pod/currency-5864f94d89-m9htt           Container image "ghcr.io/open-telemetry/demo:2.0.2-currency" already present on machine
+49s         Normal    Created             pod/currency-5864f94d89-m9htt           Created container: currency
+49s         Normal    Started             pod/currency-5864f94d89-m9htt           Started container currency
+49s         Normal    Pulled              pod/opensearch-0                        Container image "opensearchproject/opensearch:2.19.3" already present on machine
+50s         Normal    Pulling             pod/accounting-567f87bbcd-kzxzv         Pulling image "busybox:latest"
+49s         Normal    Scheduled           pod/email-59d9ffc758-92vkn              Successfully assigned astronomy-shop/email-59d9ffc758-92vkn to niko-0830-worker
+49s         Normal    Pulled              pod/email-59d9ffc758-92vkn              Container image "ghcr.io/open-telemetry/demo:2.0.2-email" already present on machine
+49s         Normal    Created             pod/email-59d9ffc758-92vkn              Created container: email
+49s         Normal    Started             pod/email-59d9ffc758-92vkn              Started container email
+49s         Normal    Started             pod/opensearch-0                        Started container configfile
+50s         Normal    Pulling             pod/cart-6fd857c656-2nw87               Pulling image "busybox:latest"
+50s         Normal    SuccessfulCreate    replicaset/shipping-7f445d59dc          Created pod: shipping-7f445d59dc-mrnp7
+49s         Normal    Started             pod/shipping-7f445d59dc-mrnp7           Started container shipping
+49s         Normal    Created             pod/shipping-7f445d59dc-mrnp7           Created container: shipping
+49s         Normal    Started             pod/load-generator-68b6f899f5-lc55r     Started container load-generator
+49s         Normal    Created             pod/load-generator-68b6f899f5-lc55r     Created container: load-generator
+49s         Normal    Pulled              pod/shipping-7f445d59dc-mrnp7           Container image "ghcr.io/open-telemetry/demo:2.0.2-shipping" already present on machine
+49s         Normal    Pulled              pod/load-generator-68b6f899f5-lc55r     Container image "ghcr.io/open-telemetry/demo:2.0.2-load-generator" already present on machine
+49s         Normal    Scheduled           pod/ad-94bd576b5-rzgxd                  Successfully assigned astronomy-shop/ad-94bd576b5-rzgxd to niko-0830-worker
+49s         Normal    Pulled              pod/otel-collector-758b8784c-6rzq8      Container image "otel/opentelemetry-collector-contrib:0.131.0" already present on machine
+49s         Normal    Started             pod/recommendation-7b49c8cb75-jfttc     Started container recommendation
+49s         Normal    Created             pod/recommendation-7b49c8cb75-jfttc     Created container: recommendation
+49s         Normal    Pulled              pod/recommendation-7b49c8cb75-jfttc     Container image "ghcr.io/open-telemetry/demo:2.0.2-recommendation" already present on machine
+49s         Normal    Scheduled           pod/recommendation-7b49c8cb75-jfttc     Successfully assigned astronomy-shop/recommendation-7b49c8cb75-jfttc to niko-0830-worker
+49s         Normal    Started             pod/kafka-6494b5cf67-jpdhg              Started container kafka
+49s         Normal    Created             pod/kafka-6494b5cf67-jpdhg              Created container: kafka
+49s         Normal    Pulled              pod/kafka-6494b5cf67-jpdhg              Container image "ghcr.io/open-telemetry/demo:2.0.2-kafka" already present on machine
+49s         Normal    Created             pod/otel-collector-758b8784c-6rzq8      Created container: opentelemetry-collector
+49s         Normal    Started             pod/otel-collector-758b8784c-6rzq8      Started container opentelemetry-collector
+49s         Normal    Pulling             pod/checkout-5bc54f8cd8-8ftcs           Pulling image "busybox:latest"
+49s         Normal    Started             pod/quote-78bf8788-4q9b2                Started container quote
+49s         Normal    Started             pod/jaeger-55f499595b-6mdgw             Started container jaeger
+49s         Normal    Created             pod/jaeger-55f499595b-6mdgw             Created container: jaeger
+50s         Normal    SuccessfulCreate    replicaset/otel-collector-758b8784c     Created pod: otel-collector-758b8784c-6rzq8
+50s         Normal    ScalingReplicaSet   deployment/otel-collector               Scaled up replica set otel-collector-758b8784c from 0 to 1
+50s         Normal    ScalingReplicaSet   deployment/grafana                      Scaled up replica set grafana-6b9fb84fb7 from 0 to 1
+38s         Warning   Unhealthy           pod/grafana-6b9fb84fb7-rl9cp            Readiness probe failed: Get "http://10.244.1.154:3000/api/health": dial tcp 10.244.1.154:3000: connect: connection refused
+49s         Normal    Started             pod/grafana-6b9fb84fb7-rl9cp            Started container grafana
+49s         Normal    Created             pod/grafana-6b9fb84fb7-rl9cp            Created container: grafana
+50s         Normal    SuccessfulCreate    replicaset/checkout-5bc54f8cd8          Created pod: checkout-5bc54f8cd8-8ftcs
+49s         Normal    Scheduled           pod/grafana-6b9fb84fb7-rl9cp            Successfully assigned astronomy-shop/grafana-6b9fb84fb7-rl9cp to niko-0830-worker
+48s         Normal    Created             pod/frontend-7d6b77c58-hg72q            Created container: frontend
+50s         Normal    ScalingReplicaSet   deployment/recommendation               Scaled up replica set recommendation-7b49c8cb75 from 0 to 1
+49s         Normal    SuccessfulCreate    replicaset/email-59d9ffc758             Created pod: email-59d9ffc758-92vkn
+48s         Normal    Scheduled           pod/frontend-proxy-548b4649d7-5dw4t     Successfully assigned astronomy-shop/frontend-proxy-548b4649d7-5dw4t to niko-0830-worker
+39s         Normal    Started             pod/ad-94bd576b5-rzgxd                  Started container ad
+50s         Normal    ScalingReplicaSet   deployment/email                        Scaled up replica set email-59d9ffc758 from 0 to 1
+39s         Normal    Created             pod/ad-94bd576b5-rzgxd                  Created container: ad
+48s         Normal    Pulled              pod/product-catalog-6988cd5f49-8jdhh    Container image "ghcr.io/open-telemetry/demo:2.0.2-product-catalog" already present on machine
+48s         Normal    Started             pod/opensearch-0                        Started container opensearch
+48s         Normal    Scheduled           pod/flagd-86575d5796-c7lzq              Successfully assigned astronomy-shop/flagd-86575d5796-c7lzq to niko-0830-worker
+48s         Normal    Pulled              pod/frontend-7d6b77c58-hg72q            Container image "ghcr.io/open-telemetry/demo:2.0.2-frontend" already present on machine
+48s         Normal    Scheduled           pod/frontend-7d6b77c58-hg72q            Successfully assigned astronomy-shop/frontend-7d6b77c58-hg72q to niko-0830-worker
+48s         Normal    Created             pod/product-catalog-6988cd5f49-8jdhh    Created container: product-catalog
+48s         Normal    Started             pod/product-catalog-6988cd5f49-8jdhh    Started container product-catalog
+49s         Normal    SuccessfulCreate    replicaset/product-catalog-6988cd5f49   Created pod: product-catalog-6988cd5f49-8jdhh
+49s         Normal    SuccessfulCreate    replicaset/grafana-6b9fb84fb7           Created pod: grafana-6b9fb84fb7-rl9cp
+49s         Normal    ScalingReplicaSet   deployment/product-catalog              Scaled up replica set product-catalog-6988cd5f49 from 0 to 1
+48s         Normal    Scheduled           pod/image-provider-7f5bc6bf-65vfs       Successfully assigned astronomy-shop/image-provider-7f5bc6bf-65vfs to niko-0830-worker
+48s         Normal    Pulled              pod/image-provider-7f5bc6bf-65vfs       Container image "ghcr.io/open-telemetry/demo:2.0.2-image-provider" already present on machine
+48s         Normal    Created             pod/image-provider-7f5bc6bf-65vfs       Created container: image-provider
+48s         Normal    Started             pod/image-provider-7f5bc6bf-65vfs       Started container image-provider
+48s         Normal    Pulling             pod/flagd-86575d5796-c7lzq              Pulling image "busybox"
+48s         Normal    Pulled              pod/accounting-567f87bbcd-kzxzv         Successfully pulled image "busybox:latest" in 1.623s (1.623s including waiting). Image size: 2223685 bytes.
+40s         Normal    Pulled              pod/ad-94bd576b5-rzgxd                  Container image "ghcr.io/open-telemetry/demo:2.0.2-ad" already present on machine
+48s         Normal    Started             pod/frontend-7d6b77c58-hg72q            Started container frontend
+49s         Normal    SuccessfulCreate    replicaset/recommendation-7b49c8cb75    Created pod: recommendation-7b49c8cb75-jfttc
+48s         Normal    Created             pod/accounting-567f87bbcd-kzxzv         Created container: wait-for-kafka
+48s         Normal    Started             pod/accounting-567f87bbcd-kzxzv         Started container wait-for-kafka
+49s         Normal    ScalingReplicaSet   deployment/image-provider               Scaled up replica set image-provider-7f5bc6bf from 0 to 1
+47s         Normal    Pulled              pod/valkey-cart-6475dcc67f-zk8b7        Container image "valkey/valkey:7.2-alpine" already present on machine
+47s         Normal    Scheduled           pod/fraud-detection-65868bcdb5-8tz68    Successfully assigned astronomy-shop/fraud-detection-65868bcdb5-8tz68 to niko-0830-worker
+48s         Normal    SuccessfulCreate    replicaset/flagd-86575d5796             Created pod: flagd-86575d5796-c7lzq
+47s         Normal    Started             pod/prometheus-58b7bfb774-h8j69         Started container prometheus-server
+47s         Normal    Created             pod/prometheus-58b7bfb774-h8j69         Created container: prometheus-server
+47s         Normal    Pulled              pod/prometheus-58b7bfb774-h8j69         Container image "quay.io/prometheus/prometheus:v3.5.0" already present on machine
+47s         Normal    Scheduled           pod/prometheus-58b7bfb774-h8j69         Successfully assigned astronomy-shop/prometheus-58b7bfb774-h8j69 to niko-0830-worker
+49s         Normal    ScalingReplicaSet   deployment/flagd                        Scaled up replica set flagd-86575d5796 from 0 to 1
+47s         Normal    Pulling             pod/fraud-detection-65868bcdb5-8tz68    Pulling image "busybox:latest"
+47s         Normal    Started             pod/frontend-proxy-548b4649d7-5dw4t     Started container frontend-proxy
+49s         Normal    ScalingReplicaSet   deployment/frontend                     Scaled up replica set frontend-7d6b77c58 from 0 to 1
+47s         Normal    Created             pod/frontend-proxy-548b4649d7-5dw4t     Created container: frontend-proxy
+49s         Normal    ScalingReplicaSet   deployment/ad                           Scaled up replica set ad-94bd576b5 from 0 to 1
+49s         Normal    SuccessfulCreate    replicaset/ad-94bd576b5                 Created pod: ad-94bd576b5-rzgxd
+47s         Normal    Pulled              pod/frontend-proxy-548b4649d7-5dw4t     Container image "ghcr.io/open-telemetry/demo:2.0.2-frontend-proxy" already present on machine
+48s         Normal    SuccessfulCreate    replicaset/frontend-7d6b77c58           Created pod: frontend-7d6b77c58-hg72q
+47s         Normal    Scheduled           pod/valkey-cart-6475dcc67f-zk8b7        Successfully assigned astronomy-shop/valkey-cart-6475dcc67f-zk8b7 to niko-0830-worker
+47s         Normal    Scheduled           pod/payment-7597577cb5-2b25p            Successfully assigned astronomy-shop/payment-7597577cb5-2b25p to niko-0830-worker
+47s         Normal    SuccessfulCreate    replicaset/payment-7597577cb5           Created pod: payment-7597577cb5-2b25p
+46s         Normal    Pulled              pod/payment-7597577cb5-2b25p            Container image "ghcr.io/open-telemetry/demo:2.0.2-payment" already present on machine
+46s         Normal    Pulled              pod/cart-6fd857c656-2nw87               Successfully pulled image "busybox:latest" in 1.634s (3.258s including waiting). Image size: 2223685 bytes.
+46s         Normal    Created             pod/cart-6fd857c656-2nw87               Created container: wait-for-valkey-cart
+46s         Normal    Started             pod/cart-6fd857c656-2nw87               Started container wait-for-valkey-cart
+48s         Normal    ScalingReplicaSet   deployment/prometheus                   Scaled up replica set prometheus-58b7bfb774 from 0 to 1
+47s         Normal    SuccessfulCreate    replicaset/valkey-cart-6475dcc67f       Created pod: valkey-cart-6475dcc67f-zk8b7
+46s         Normal    Started             pod/valkey-cart-6475dcc67f-zk8b7        Started container valkey-cart
+46s         Normal    Created             pod/valkey-cart-6475dcc67f-zk8b7        Created container: valkey-cart
+47s         Normal    SuccessfulCreate    replicaset/fraud-detection-65868bcdb5   Created pod: fraud-detection-65868bcdb5-8tz68
+48s         Normal    SuccessfulCreate    replicaset/image-provider-7f5bc6bf      Created pod: image-provider-7f5bc6bf-65vfs
+47s         Normal    SuccessfulCreate    replicaset/prometheus-58b7bfb774        Created pod: prometheus-58b7bfb774-h8j69
+46s         Normal    Created             pod/payment-7597577cb5-2b25p            Created container: payment
+46s         Normal    Started             pod/payment-7597577cb5-2b25p            Started container payment
+48s         Normal    ScalingReplicaSet   deployment/fraud-detection              Scaled up replica set fraud-detection-65868bcdb5 from 0 to 1
+48s         Normal    SuccessfulCreate    replicaset/frontend-proxy-548b4649d7    Created pod: frontend-proxy-548b4649d7-5dw4t
+49s         Normal    ScalingReplicaSet   deployment/frontend-proxy               Scaled up replica set frontend-proxy-548b4649d7 from 0 to 1
+48s         Normal    ScalingReplicaSet   deployment/payment                      Scaled up replica set payment-7597577cb5 from 0 to 1
+45s         Normal    Created             pod/checkout-5bc54f8cd8-8ftcs           Created container: wait-for-kafka
+45s         Normal    Pulled              pod/checkout-5bc54f8cd8-8ftcs           Successfully pulled image "busybox:latest" in 1.635s (4.802s including waiting). Image size: 2223685 bytes.
+48s         Normal    ScalingReplicaSet   deployment/valkey-cart                  Scaled up replica set valkey-cart-6475dcc67f from 0 to 1
+44s         Normal    Started             pod/checkout-5bc54f8cd8-8ftcs           Started container wait-for-kafka
+43s         Normal    Pulled              pod/flagd-86575d5796-c7lzq              Container image "ghcr.io/open-feature/flagd:v0.12.8" already present on machine
+43s         Normal    Pulled              pod/flagd-86575d5796-c7lzq              Successfully pulled image "busybox" in 1.611s (4.886s including waiting). Image size: 2223685 bytes.
+43s         Normal    Created             pod/flagd-86575d5796-c7lzq              Created container: flagd
+43s         Normal    Started             pod/flagd-86575d5796-c7lzq              Started container init-config
+43s         Normal    Pulled              pod/cart-6fd857c656-2nw87               Container image "ghcr.io/open-telemetry/demo:2.0.2-cart" already present on machine
+43s         Normal    Created             pod/flagd-86575d5796-c7lzq              Created container: init-config
+42s         Normal    Started             pod/cart-6fd857c656-2nw87               Started container cart
+42s         Normal    Created             pod/cart-6fd857c656-2nw87               Created container: cart
+42s         Normal    Started             pod/flagd-86575d5796-c7lzq              Started container flagd-ui
+42s         Normal    Created             pod/flagd-86575d5796-c7lzq              Created container: flagd-ui
+42s         Normal    Pulled              pod/flagd-86575d5796-c7lzq              Container image "ghcr.io/open-telemetry/demo:2.0.2-flagd-ui" already present on machine
+42s         Normal    Started             pod/flagd-86575d5796-c7lzq              Started container flagd
+41s         Normal    Pulled              pod/fraud-detection-65868bcdb5-8tz68    Successfully pulled image "busybox:latest" in 1.607s (5.251s including waiting). Image size: 2223685 bytes.
+41s         Normal    Created             pod/fraud-detection-65868bcdb5-8tz68    Created container: wait-for-kafka
+41s         Normal    Started             pod/fraud-detection-65868bcdb5-8tz68    Started container wait-for-kafka
+40s         Warning   Unhealthy           pod/opensearch-0                        Startup probe failed: dial tcp 10.244.1.143:9200: connect: connection refused
+25s         Normal    Pulled              pod/accounting-567f87bbcd-kzxzv         Container image "ghcr.io/open-telemetry/demo:2.0.2-accounting" already present on machine
+25s         Normal    Started             pod/checkout-5bc54f8cd8-8ftcs           Started container checkout
+25s         Normal    Created             pod/accounting-567f87bbcd-kzxzv         Created container: accounting
+25s         Normal    Started             pod/accounting-567f87bbcd-kzxzv         Started container accounting
+25s         Normal    Pulled              pod/checkout-5bc54f8cd8-8ftcs           Container image "ghcr.io/open-telemetry/demo:2.0.2-checkout" already present on machine
+25s         Normal    Created             pod/checkout-5bc54f8cd8-8ftcs           Created container: checkout
+5s          Normal    Pulled              pod/fraud-detection-65868bcdb5-8tz68    Container image "ghcr.io/open-telemetry/demo:2.0.2-fraud-detection" already present on machine
+5s          Normal    Created             pod/fraud-detection-65868bcdb5-8tz68    Created container: fraud-detection
+5s          Normal    Started             pod/fraud-detection-65868bcdb5-8tz68    Started container fraud-detection
+2s          Warning   BackOff             pod/fraud-detection-65868bcdb5-8tz68    Back-off restarting failed container fraud-detection in pod fraud-detection-65868bcdb5-8tz68_astronomy-shop(56fef627-83cd-4f06-a4a0-0242448b4bf1)
+2s          Normal    ScalingReplicaSet   deployment/flagd                        Scaled up replica set flagd-5568df8b9c from 0 to 1
+2s          Normal    Scheduled           pod/flagd-5568df8b9c-tfcgj              Successfully assigned astronomy-shop/flagd-5568df8b9c-tfcgj to niko-0830-worker
+2s          Normal    Pulling             pod/flagd-5568df8b9c-tfcgj              Pulling image "busybox"
+2s          Normal    SuccessfulCreate    replicaset/flagd-5568df8b9c             Created pod: flagd-5568df8b9c-tfcgj
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod fraud-detection-65868bcdb5-8tz68 -n astronomy-shop")
+```
+===== Output Message from docker ====
+Name:             fraud-detection-65868bcdb5-8tz68
+Namespace:        astronomy-shop
+Priority:         0
+Service Account:  astronomy-shop
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 04:44:43 +0000
+Labels:           app.kubernetes.io/component=fraud-detection
+                  app.kubernetes.io/name=fraud-detection
+                  opentelemetry.io/name=fraud-detection
+                  pod-template-hash=65868bcdb5
+Annotations:      <none>
+Status:           Running
+IP:               10.244.1.164
+IPs:
+  IP:           10.244.1.164
+Controlled By:  ReplicaSet/fraud-detection-65868bcdb5
+Init Containers:
+  wait-for-kafka:
+    Container ID:  containerd://2ceca205293d9fecec19d8a60b3ef2287a9997d03bbc8f97cb91a3d37882c802
+    Image:         busybox:latest
+    Image ID:      docker.io/library/busybox@sha256:ab33eacc8251e3807b85bb6dba570e4698c3998eca6f0fc2ccb60575a563ea74
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+      until nc -z -v -w30 kafka 9092; do echo waiting for kafka; sleep 2; done;
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sun, 31 Aug 2025 04:44:49 +0000
+      Finished:     Sun, 31 Aug 2025 04:45:05 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-xssts (ro)
+Containers:
+  fraud-detection:
+    Container ID:   containerd://470e8b0712f36eafd880ee3730765ebb9105ea2f60ec160e7f407f522043870c
+    Image:          ghcr.io/open-telemetry/demo:2.0.2-fraud-detection
+    Image ID:       ghcr.io/open-telemetry/demo@sha256:8b0a841c19f583a83b150bbd0609d85b3f09d19a75888d716bb234098f3385b4
+    Port:           <none>
+    Host Port:      <none>
+    State:          Terminated
+      Reason:       OOMKilled
+      Exit Code:    137
+      Started:      Sun, 31 Aug 2025 04:45:25 +0000
+      Finished:     Sun, 31 Aug 2025 04:45:27 +0000
+    Last State:     Terminated
+      Reason:       OOMKilled
+      Exit Code:    137
+      Started:      Sun, 31 Aug 2025 04:45:09 +0000
+      Finished:     Sun, 31 Aug 2025 04:45:11 +0000
+    Ready:          False
+    Restart Count:  2
+    Limits:
+      memory:  300Mi
+    Requests:
+      memory:  300Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      KAFKA_ADDR:                                         kafka:9092
+      FLAGD_HOST:                                         flagd
+      FLAGD_PORT:                                         8013
+      OTEL_EXPORTER_OTLP_ENDPOINT:                        http://$(OTEL_COLLECTOR_NAME):4318
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-xssts (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-xssts:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  49s               default-scheduler  Successfully assigned astronomy-shop/fraud-detection-65868bcdb5-8tz68 to niko-0830-worker
+  Normal   Pulling    49s               kubelet            Pulling image "busybox:latest"
+  Normal   Pulled     43s               kubelet            Successfully pulled image "busybox:latest" in 1.607s (5.251s including waiting). Image size: 2223685 bytes.
+  Normal   Created    43s               kubelet            Created container: wait-for-kafka
+  Normal   Started    43s               kubelet            Started container wait-for-kafka
+  Normal   Pulled     7s (x3 over 26s)  kubelet            Container image "ghcr.io/open-telemetry/demo:2.0.2-fraud-detection" already present on machine
+  Normal   Created    7s (x3 over 26s)  kubelet            Created container: fraud-detection
+  Normal   Started    7s (x3 over 26s)  kubelet            Started container fraud-detection
+  Warning  BackOff    4s (x2 over 20s)  kubelet            Back-off restarting failed container fraud-detection in pod fraud-detection-65868bcdb5-8tz68_astronomy-shop(56fef627-83cd-4f06-a4a0-0242448b4bf1)
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+exec_shell("kubectl describe pod flagd-5568df8b9c-tfcgj -n astronomy-shop")
+```
+===== Output Message from docker ====
+Name:             flagd-5568df8b9c-tfcgj
+Namespace:        astronomy-shop
+Priority:         0
+Service Account:  astronomy-shop
+Node:             niko-0830-worker/172.18.0.2
+Start Time:       Sun, 31 Aug 2025 04:45:28 +0000
+Labels:           app.kubernetes.io/component=flagd
+                  app.kubernetes.io/name=flagd
+                  opentelemetry.io/name=flagd
+                  pod-template-hash=5568df8b9c
+Annotations:      kubectl.kubernetes.io/restartedAt: 2025-08-31T04:45:28Z
+Status:           Running
+IP:               10.244.1.167
+IPs:
+  IP:           10.244.1.167
+Controlled By:  ReplicaSet/flagd-5568df8b9c
+Init Containers:
+  init-config:
+    Container ID:  containerd://acc1013d98446c2e2ac03295eb80188e479901d470982556a706100e4159f283
+    Image:         busybox
+    Image ID:      docker.io/library/busybox@sha256:ab33eacc8251e3807b85bb6dba570e4698c3998eca6f0fc2ccb60575a563ea74
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+      cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json && cat /config-rw/demo.flagd.json
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sun, 31 Aug 2025 04:45:30 +0000
+      Finished:     Sun, 31 Aug 2025 04:45:30 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /config-ro from config-ro (rw)
+      /config-rw from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-6wzvh (ro)
+Containers:
+  flagd:
+    Container ID:  containerd://523bc3cac4ff40754f5327e97c048b99c87de3893ffa62f42a529d18fbdfa8d4
+    Image:         ghcr.io/open-feature/flagd:v0.12.8
+    Image ID:      ghcr.io/open-feature/flagd@sha256:634bd05995f5fd0a1b8196822feb8c2d99d37be9e2a25cb17b5d6c4c8fd7e821
+    Ports:         8013/TCP, 8016/TCP
+    Host Ports:    0/TCP, 0/TCP
+    Command:
+      /flagd-build
+      start
+      --port
+      8013
+      --ofrep-port
+      8016
+      --uri
+      file:./etc/flagd/demo.flagd.json
+    State:          Running
+      Started:      Sun, 31 Aug 2025 04:45:31 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  75Mi
+    Requests:
+      memory:  75Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      FLAGD_METRICS_EXPORTER:                             otel
+      FLAGD_OTEL_COLLECTOR_URI:                           $(OTEL_COLLECTOR_NAME):4317
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /etc/flagd from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-6wzvh (ro)
+  flagd-ui:
+    Container ID:   containerd://aae3f0b81330383146731e80a5d3358b0d836e852ddd1f6686b4bd6bf247cb7f
+    Image:          ghcr.io/open-telemetry/demo:2.0.2-flagd-ui
+    Image ID:       ghcr.io/open-telemetry/demo@sha256:655da6a8735b7bb7da2c36c8992387d03ae06420f2a06fbc499f2591889c1d03
+    Port:           4000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sun, 31 Aug 2025 04:45:31 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  100Mi
+    Requests:
+      memory:  100Mi
+    Environment:
+      OTEL_SERVICE_NAME:                                   (v1:metadata.labels['app.kubernetes.io/component'])
+      OTEL_COLLECTOR_NAME:                                otel-collector
+      OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:  cumulative
+      FLAGD_METRICS_EXPORTER:                             otel
+      OTEL_EXPORTER_OTLP_ENDPOINT:                        http://$(OTEL_COLLECTOR_NAME):4318
+      OTEL_RESOURCE_ATTRIBUTES:                           service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=2.0.2
+    Mounts:
+      /app/data from config-rw (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-6wzvh (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  config-rw:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config-ro:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      flagd-config
+    Optional:  false
+  kube-api-access-6wzvh:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  6s    default-scheduler  Successfully assigned astronomy-shop/flagd-5568df8b9c-tfcgj to niko-0830-worker
+  Normal  Pulling    6s    kubelet            Pulling image "busybox"
+  Normal  Pulled     4s    kubelet            Successfully pulled image "busybox" in 1.579s (1.579s including waiting). Image size: 2223685 bytes.
+  Normal  Created    4s    kubelet            Created container: init-config
+  Normal  Started    4s    kubelet            Started container init-config
+  Normal  Pulled     3s    kubelet            Container image "ghcr.io/open-feature/flagd:v0.12.8" already present on machine
+  Normal  Created    3s    kubelet            Created container: flagd
+  Normal  Started    3s    kubelet            Started container flagd
+  Normal  Pulled     3s    kubelet            Container image "ghcr.io/open-telemetry/demo:2.0.2-flagd-ui" already present on machine
+  Normal  Created    3s    kubelet            Created container: flagd-ui
+  Normal  Started    3s    kubelet            Started container flagd-ui
+===== Agent (OpenRouter - qwen/qwen3-coder-30b-a3b-instruct) ====
+```
+submit("Yes")
+```
